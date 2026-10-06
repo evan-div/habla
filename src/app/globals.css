@@ -1,0 +1,306 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/* Habla design tokens                                                  */
+/* A warm "talavera teal · rosa mexicano · marigold" palette on cream.  */
+/* Semantic tokens flip in dark mode; accent scales stay constant.      */
+/* ------------------------------------------------------------------ */
+
+:root {
+  color-scheme: light;
+
+  --bg: #fdf8f0;
+  --surface: #ffffff;
+  --surface-2: #f8f0e3;
+  --line: #e9dec9;
+  --line-strong: #d6c7aa;
+  --ink: #1b1f3b;
+  --muted: #565b7a;
+  --faint: #8e91ab;
+
+  --brand: #0a7c82;
+  --brand-hover: #086369;
+  --brand-edge: #064c51;
+  --on-brand: #ffffff;
+  --ring: #0e8e94;
+
+  --soft-teal: #e1f4f4;
+  --on-teal: #065158;
+  --soft-rosa: #ffe6f0;
+  --on-rosa: #8c0f44;
+  --soft-sol: #fff1c9;
+  --on-sol: #764f00;
+  --soft-leaf: #e0f4e7;
+  --on-leaf: #17622c;
+  --soft-chili: #ffe8e4;
+  --on-chili: #9a281f;
+  --soft-violet: #eee8ff;
+  --on-violet: #4a2d9c;
+
+  --elev-card: 0 1px 0 rgb(27 31 59 / 0.04), 0 10px 28px -14px rgb(27 31 59 / 0.22);
+  --elev-pop: 0 18px 40px -16px rgb(27 31 59 / 0.35);
+  --scrim: rgb(20 22 43 / 0.45);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #12142a;
+  --surface: #1b1e3c;
+  --surface-2: #242850;
+  --line: #31356a;
+  --line-strong: #444a86;
+  --ink: #f4f2ff;
+  --muted: #b2b5d8;
+  --faint: #7d80a8;
+
+  --brand: #34bcc1;
+  --brand-hover: #5ccfd3;
+  --brand-edge: #1b8388;
+  --on-brand: #04262a;
+  --ring: #5ccfd3;
+
+  --soft-teal: #123a42;
+  --on-teal: #8fe4e8;
+  --soft-rosa: #4a1a35;
+  --on-rosa: #ffb3d1;
+  --soft-sol: #473a10;
+  --on-sol: #ffd978;
+  --soft-leaf: #123c24;
+  --on-leaf: #8fe0a9;
+  --soft-chili: #4a1f1c;
+  --on-chili: #ffb4a8;
+  --soft-violet: #31275e;
+  --on-violet: #cbb9ff;
+
+  --elev-card: 0 1px 0 rgb(0 0 0 / 0.2), 0 12px 30px -16px rgb(0 0 0 / 0.6);
+  --elev-pop: 0 18px 40px -16px rgb(0 0 0 / 0.7);
+  --scrim: rgb(5 6 18 / 0.65);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --bg: #12142a;
+    --surface: #1b1e3c;
+    --surface-2: #242850;
+    --line: #31356a;
+    --line-strong: #444a86;
+    --ink: #f4f2ff;
+    --muted: #b2b5d8;
+    --faint: #7d80a8;
+
+    --brand: #34bcc1;
+    --brand-hover: #5ccfd3;
+    --brand-edge: #1b8388;
+    --on-brand: #04262a;
+    --ring: #5ccfd3;
+
+    --soft-teal: #123a42;
+    --on-teal: #8fe4e8;
+    --soft-rosa: #4a1a35;
+    --on-rosa: #ffb3d1;
+    --soft-sol: #473a10;
+    --on-sol: #ffd978;
+    --soft-leaf: #123c24;
+    --on-leaf: #8fe0a9;
+    --soft-chili: #4a1f1c;
+    --on-chili: #ffb4a8;
+    --soft-violet: #31275e;
+    --on-violet: #cbb9ff;
+
+    --elev-card: 0 1px 0 rgb(0 0 0 / 0.2), 0 12px 30px -16px rgb(0 0 0 / 0.6);
+    --elev-pop: 0 18px 40px -16px rgb(0 0 0 / 0.7);
+    --scrim: rgb(5 6 18 / 0.65);
+  }
+}
+
+@theme inline {
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display), var(--font-body), ui-sans-serif, system-ui, sans-serif;
+
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-edge: var(--brand-edge);
+  --color-on-brand: var(--on-brand);
+  --color-ring: var(--ring);
+
+  --color-soft-teal: var(--soft-teal);
+  --color-on-teal: var(--on-teal);
+  --color-soft-rosa: var(--soft-rosa);
+  --color-on-rosa: var(--on-rosa);
+  --color-soft-sol: var(--soft-sol);
+  --color-on-sol: var(--on-sol);
+  --color-soft-leaf: var(--soft-leaf);
+  --color-on-leaf: var(--on-leaf);
+  --color-soft-chili: var(--soft-chili);
+  --color-on-chili: var(--on-chili);
+  --color-soft-violet: var(--soft-violet);
+  --color-on-violet: var(--on-violet);
+
+  --shadow-card: var(--elev-card);
+  --shadow-pop: var(--elev-pop);
+}
+
+/* Fixed accent solids (identical in both themes). */
+@theme {
+  --color-teal-400: #25a5ab;
+  --color-teal-500: #0e8e94;
+  --color-teal-600: #0a7c82;
+  --color-teal-700: #086369;
+
+  --color-rosa-300: #fa6a9f;
+  --color-rosa-400: #ee3f82;
+  --color-rosa-500: #db2169;
+  --color-rosa-600: #b91556;
+
+  --color-sol-200: #ffd971;
+  --color-sol-300: #ffc93c;
+  --color-sol-400: #f7b500;
+  --color-sol-500: #de9a00;
+  --color-sol-600: #b57800;
+
+  --color-leaf-400: #4cbc6d;
+  --color-leaf-500: #2ba84f;
+  --color-leaf-600: #1e8a3d;
+
+  --color-chili-400: #f06a5c;
+  --color-chili-500: #e5483a;
+  --color-chili-600: #c4352a;
+
+  /* Mastery bands — validated for color-blind separation and contrast in both themes. */
+  --color-band-weak: #e5483a;
+  --color-band-learning: #d99200;
+  --color-band-strong: #1e8a3d;
+
+  --color-violet-400: #9272ec;
+  --color-violet-500: #7a55e0;
+  --color-violet-600: #6440c4;
+
+  --radius-card: 1.5rem;
+  --animate-pop: pop 0.35s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+  --animate-rise: rise 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  --animate-fade: fade 0.25s ease-out both;
+  --animate-shake: shake 0.4s ease-in-out;
+  --animate-float: float 4s ease-in-out infinite;
+  --animate-blink: blink 4.5s ease-in-out infinite;
+}
+
+@keyframes pop {
+  0% { opacity: 0; transform: scale(0.85); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes rise {
+  0% { opacity: 0; transform: translateY(14px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(3px); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.1); }
+}
+@keyframes confetti-fall {
+  0% { opacity: 0; transform: translate3d(0, -20px, 0) rotate(0deg); }
+  15% { opacity: 1; }
+  100% { opacity: 0; transform: translate3d(var(--dx, 0px), 280px, 0) rotate(var(--rot, 360deg)); }
+}
+@keyframes ring-pulse {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--brand) 45%, transparent); }
+  100% { box-shadow: 0 0 0 14px transparent; }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ------------------------------------------------------------------ */
+/* Base                                                                 */
+/* ------------------------------------------------------------------ */
+
+html {
+  background: var(--bg);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+}
+
+:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 0.5rem;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--brand) 30%, transparent);
+}
+
+/* Tactile "pressed" feel for chunky controls. */
+.tactile {
+  transition: transform 0.08s ease, box-shadow 0.08s ease, background-color 0.15s ease;
+}
+.tactile:active:not(:disabled) {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 var(--edge, transparent) !important;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--surface-2) 25%, var(--line) 37%, var(--surface-2) 63%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+/* Hide scrollbars on horizontal chip rows while keeping them scrollable. */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+dialog::backdrop {
+  background: var(--scrim);
+  backdrop-filter: blur(2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
