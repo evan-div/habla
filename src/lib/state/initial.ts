@@ -36,6 +36,7 @@ export function createInitialState(userId: string = LOCAL_USER_ID): LearnerState
       realTalkLessons: 0,
       dailyGoalsHit: 0,
     },
+    placement: null,
     clockOffsetMs: 0,
   };
 }

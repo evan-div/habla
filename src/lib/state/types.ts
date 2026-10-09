@@ -71,6 +71,8 @@ export interface LessonProgress {
   timesCompleted: number;
   bestAccuracy: number;
   lastAccuracy: number;
+  /** Skipped via the placement check rather than played. */
+  placedOut?: boolean;
 }
 
 export interface DailyActivity {
@@ -93,6 +95,14 @@ export interface Counters {
   dailyGoalsHit: number;
 }
 
+export interface PlacementRecord {
+  completedAt: number;
+  /** Unit number the learner chose to start at. */
+  startUnitNumber: number;
+  correct: number;
+  answered: number;
+}
+
 export interface LearnerState {
   version: number;
   userId: string;
@@ -105,6 +115,7 @@ export interface LearnerState {
   activity: Record<string, DailyActivity>;
   achievements: Record<string, { unlockedAt: number }>;
   counters: Counters;
+  placement: PlacementRecord | null;
   /** Developer tool: shifts "now" so spaced repetition can be tested. */
   clockOffsetMs: number;
 }

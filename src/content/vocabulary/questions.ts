@@ -1,0 +1,28 @@
+import { entries } from "./helpers";
+
+export const QUESTION_WORDS = entries("question-words", [
+  { id: "quien", es: "¿quién?", en: "who?", pos: "pronoun", ex: ["¿Quién es ella?", "Who is she?"], pron: "kyehn", note: "Question words always carry an accent. For “who” asking about several people, use quiénes." },
+  { id: "que", es: "¿qué?", en: "what?", pos: "pronoun", ex: ["¿Qué es esto?", "What is this?"], pron: "keh", note: "With an accent it's a question word; without one, que means “that” — you'll meet it later." },
+  { id: "cual", es: "¿cuál?", en: "which one? / what?", pos: "pronoun", d: 2, ex: ["¿Cuál quieres?", "Which one do you want?"], pron: "kwahl", note: "Use cuál to choose from a set; use qué to ask what something is." },
+  { id: "esto", es: "esto", en: "this (thing)", pos: "pronoun", ex: ["¿Qué es esto?", "What is this?"], pron: "EHS-toh", note: "Points at something close to you.", rel: ["eso"] },
+  { id: "eso", es: "eso", en: "that (thing)", pos: "pronoun", ex: ["Eso es un taco.", "That is a taco."], pron: "EH-soh", note: "Points at something farther from you. Also used alone: “¡Eso!” = “That's it!”", rel: ["esto"] },
+  { id: "donde", es: "¿dónde?", en: "where?", pos: "adverb", ex: ["¿Dónde está Ana?", "Where is Ana?"], pron: "DOHN-deh", note: "Dónde asks about location. You've already met it inside ¿dónde vives? and ¿de dónde eres?" },
+  { id: "como-q", es: "¿cómo?", en: "how? / what? (pardon)", pos: "adverb", ex: ["¿Cómo está tu mamá?", "How is your mom?"], pron: "KOH-moh", note: "Also a polite “pardon?” when you didn't catch something. Don't confuse with como = “I eat”." },
+  { id: "se-llama", es: "se llama", en: "his / her name is; is called", pos: "expression", d: 2, ex: ["Mi hermana se llama Ana.", "My sister's name is Ana."], pron: "seh YAH-mah", note: "Me llamo (I), te llamas (you), se llama (he / she / usted).", rel: ["me-llamo", "como-te-llamas"] },
+  { id: "cuando", es: "¿cuándo?", en: "when?", pos: "adverb", ex: ["¿Cuándo vas a casa?", "When are you going home?"], pron: "KWAHN-doh" },
+  { id: "manana", es: "mañana", en: "tomorrow", pos: "adverb", ex: ["Mañana voy al trabajo.", "Tomorrow I'm going to work."], pron: "mah-NYAH-nah", note: "Also means “morning” (la mañana). In Mexico, “mañana” can be a polite, vague “not today” — confirm the day if it matters!" },
+  { id: "ahora", es: "ahora", en: "now", pos: "adverb", ex: ["Ahora estoy en casa.", "Now I'm at home."], pron: "ah-OH-rah" },
+  { id: "dia", es: "día", en: "day", pos: "noun", g: "m", pl: "días", ex: ["¿Qué día es hoy?", "What day is it today?"], pron: "DEE-ah", note: "Masculine even though it ends in -a: el día." },
+  { id: "semana", es: "semana", en: "week", pos: "noun", g: "f", pl: "semanas", ex: ["Mi semana es muy ocupada.", "My week is very busy."], pron: "seh-MAH-nah" },
+  { id: "lunes", es: "lunes", en: "Monday", pos: "noun", g: "m", ex: ["El lunes voy al trabajo.", "On Monday I go to work."], pron: "LOO-nehs", note: "Days of the week aren't capitalized in Spanish. Many Mexican calendars start the week on Monday." },
+  { id: "martes", es: "martes", en: "Tuesday", pos: "noun", g: "m", ex: ["El martes estoy ocupado.", "On Tuesday I'm busy."], pron: "MAR-tehs", note: "Superstition: in the Spanish-speaking world the unlucky day is martes 13, not Friday the 13th." },
+  { id: "miercoles", es: "miércoles", en: "Wednesday", pos: "noun", g: "m", d: 2, ex: ["El miércoles como en casa.", "On Wednesday I eat at home."], pron: "MYEHR-koh-lehs" },
+  { id: "jueves", es: "jueves", en: "Thursday", pos: "noun", g: "m", ex: ["El jueves hablo con mi madre.", "On Thursday I talk with my mother."], pron: "HWEH-behs" },
+  { id: "viernes", es: "viernes", en: "Friday", pos: "noun", g: "m", ex: ["El viernes voy a casa.", "On Friday I go home."], pron: "BYEHR-nehs" },
+  { id: "sabado", es: "sábado", en: "Saturday", pos: "noun", g: "m", ex: ["El sábado estoy en casa.", "On Saturday I'm at home."], pron: "SAH-bah-doh" },
+  { id: "domingo", es: "domingo", en: "Sunday", pos: "noun", g: "m", ex: ["El domingo como con mi familia.", "On Sunday I eat with my family."], pron: "doh-MEEN-goh", note: "Sunday lunch with the whole family is a Mexican institution." },
+  { id: "por-que", es: "¿por qué?", en: "why?", pos: "expression", d: 2, ex: ["¿Por qué estás cansado?", "Why are you tired?"], pron: "por KEH", note: "Two words, with an accent on qué, when you ask." , rel: ["porque"] },
+  { id: "porque", es: "porque", en: "because", pos: "conjunction", d: 2, ex: ["Estoy cansado porque tengo mucho trabajo.", "I'm tired because I have a lot of work."], pron: "POR-keh", note: "One word, no accent, when you answer.", rel: ["por-que"] },
+  { id: "mucho", es: "mucho", en: "a lot / much", pos: "adjective", fem: "mucha", pl: "muchos", ex: ["Tengo mucho trabajo.", "I have a lot of work."], pron: "MOO-choh", note: "It agrees with the noun: mucha comida, muchos amigos, muchas gracias." },
+  { id: "cuanto", es: "¿cuánto?", en: "how much?", pos: "adverb", fem: "¿cuánta?", pl: "¿cuántos?", d: 2, ex: ["¿Cuánto es?", "How much is it?"], pron: "KWAHN-toh", note: "Agrees with the noun: ¿cuánta agua?, ¿cuántos años?" },
+]);

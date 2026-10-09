@@ -95,7 +95,8 @@ export function applySession(
   const today = dateKey(now);
   const lesson = payload.lessonId ? getLesson(payload.lessonId) : undefined;
   const previous = payload.lessonId ? state.lessons[payload.lessonId] : undefined;
-  const isRepeat = payload.kind === "lesson" && Boolean(previous);
+  // A lesson skipped by placement still pays full XP the first time it's actually played.
+  const isRepeat = payload.kind === "lesson" && Boolean(previous && !previous.placedOut);
 
   const streakBefore = streakOf(state, now);
   const levelBefore = levelForXp(state.totalXp);
@@ -132,7 +133,7 @@ export function applySession(
   const lessons = { ...state.lessons };
   if (payload.kind === "lesson" && payload.lessonId) {
     const accuracy = xp.accuracy ?? 1;
-    lessons[payload.lessonId] = previous
+    lessons[payload.lessonId] = previous && !previous.placedOut
       ? { ...previous, lastCompletedAt: now, timesCompleted: previous.timesCompleted + 1, lastAccuracy: accuracy, bestAccuracy: Math.max(previous.bestAccuracy, accuracy) }
       : { lessonId: payload.lessonId, firstCompletedAt: now, lastCompletedAt: now, timesCompleted: 1, bestAccuracy: accuracy, lastAccuracy: accuracy };
   }
@@ -145,7 +146,7 @@ export function applySession(
     reviewCorrect: state.counters.reviewCorrect + (payload.kind === "lesson" ? 0 : xp.correctCount),
     reviewSessions: state.counters.reviewSessions + (payload.kind === "lesson" ? 0 : 1),
     perfectLessons: state.counters.perfectLessons + (payload.kind === "lesson" && perfect ? 1 : 0),
-    realTalkLessons: state.counters.realTalkLessons + (payload.kind === "lesson" && lesson?.kind === "real-talk" && !previous ? 1 : 0),
+    realTalkLessons: state.counters.realTalkLessons + (payload.kind === "lesson" && lesson?.kind === "real-talk" && !isRepeat ? 1 : 0),
     dailyGoalsHit: state.counters.dailyGoalsHit + (dailyGoalHit ? 1 : 0),
   };
 
@@ -180,7 +181,7 @@ export function applySession(
     level: { before: levelBefore, after: levelForXp(totalXp) },
     dailyGoal: { before: dailyBefore, after: dailyBefore + xp.total, target: state.profile.dailyGoalXp, justReached: dailyGoalHit },
     mistakes: payload.mistakes,
-    isFirstCompletion: payload.kind === "lesson" && !previous,
+    isFirstCompletion: payload.kind === "lesson" && !isRepeat,
     completedUnitId,
   };
 

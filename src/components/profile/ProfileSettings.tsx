@@ -9,6 +9,7 @@ import { levelInfo } from "@/lib/gamification/levels";
 import { useLearner } from "@/lib/state/hooks";
 import { DataCard } from "./DataCard";
 import { DeveloperTools } from "./DeveloperTools";
+import { PlacementCard } from "./PlacementCard";
 import { PreferencesCard } from "./PreferencesCard";
 import { ProfileCard } from "./ProfileCard";
 
@@ -38,6 +39,7 @@ export function ProfileSettings() {
           <Badge tone="neutral" className="ml-auto hidden sm:inline-flex">Mexican Spanish</Badge>
         </Card>
         <ProfileCard key={state.profile.displayName} profile={state.profile} />
+        <PlacementCard placement={state.placement} />
         <PreferencesCard settings={state.settings} />
         <DataCard state={state} />
         <DeveloperTools state={state} now={now} />

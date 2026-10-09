@@ -1,3 +1,4 @@
+import { applyPlacement } from "@/lib/placement";
 import { buildSampleState } from "@/lib/storage/demo-data";
 import { DAY } from "@/lib/util/dates";
 import { createInitialState } from "./initial";
@@ -6,6 +7,11 @@ import type { LearnerState, Profile, Settings } from "./types";
 
 export function completeOnboarding(profile: Omit<Profile, "onboardedAt">) {
   updateState((s) => ({ ...s, profile: { ...profile, onboardedAt: getNowFor(s) } }));
+}
+
+/** Start the course at `startUnitNumber`, skipping (and adding to review) everything before it. */
+export function choosePlacement(startUnitNumber: number, score: { correct: number; answered: number }) {
+  updateState((s) => applyPlacement(s, startUnitNumber, score, getNowFor(s)));
 }
 
 export function updateProfile(patch: Partial<Profile>) {

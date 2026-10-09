@@ -2,7 +2,7 @@
 
 import { ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Mascot, type MascotMood } from "@/components/brand/Mascot";
 import { Logo } from "@/components/brand/Logo";
 import { LoadingScreen } from "@/components/layout/LoadingScreen";
@@ -46,9 +46,11 @@ export function OnboardingFlow() {
   const [reasons, setReasons] = useState<Reason[]>([]);
   const [goal, setGoal] = useState<number>(DEFAULT_DAILY_GOAL_XP);
 
+  // Where to go once onboarding is saved (people who know some Spanish get a placement check).
+  const destination = useRef("/");
   const alreadyDone = state !== null && state.profile.onboardedAt !== null;
   useEffect(() => {
-    if (alreadyDone) router.replace("/");
+    if (alreadyDone) router.replace(destination.current);
   }, [alreadyDone, router]);
 
   if (!state || alreadyDone) return <LoadingScreen />;
@@ -58,8 +60,8 @@ export function OnboardingFlow() {
 
   function next() {
     if (step === "plan") {
+      destination.current = level && level !== "new" ? "/placement" : "/";
       completeOnboarding({ displayName: name.trim(), selfLevel: level ?? "new", reasons, dailyGoalXp: goal });
-      router.replace("/");
       return;
     }
     setStepIndex((i) => i + 1);
@@ -154,7 +156,7 @@ export function OnboardingFlow() {
             <div className="mt-4 text-center">
               <h1 className="text-3xl font-extrabold">Your plan{name.trim() ? `, ${name.trim()}` : ""}</h1>
               <ul className="mx-auto mt-5 max-w-md space-y-3 text-left">
-                <li className="rounded-2xl bg-soft-teal p-4"><span className="font-extrabold">Start at the beginning.</span> <span className="text-muted">{COURSE.title} begins with Unit 1: Hello — no matter your level. Solid foundations make everything later easier.</span></li>
+                <li className="rounded-2xl bg-soft-teal p-4">{level && level !== "new" ? (<><span className="font-extrabold">A quick placement check.</span> <span className="text-muted">A couple of minutes of questions will suggest where in {COURSE.title} to begin — or you can start at Unit 1.</span></>) : (<><span className="font-extrabold">Start at the beginning.</span> <span className="text-muted">{COURSE.title} begins with Unit 1: Hello. Solid foundations make everything later easier.</span></>)}</li>
                 <li className="rounded-2xl bg-soft-sol p-4"><span className="font-extrabold">{goal} XP a day.</span> <span className="text-muted">Roughly {Math.max(1, Math.round(goal / 65))} lesson{goal >= 100 ? "s" : ""} — and your words come back in review.</span></li>
                 <li className="rounded-2xl bg-soft-violet p-4"><span className="font-extrabold">Already know some?</span> <span className="text-muted">Turn on “Open course” in your profile to jump to any lesson.</span></li>
               </ul>
@@ -165,7 +167,7 @@ export function OnboardingFlow() {
 
       <div className="flex flex-col gap-2">
         <Button size="lg" fullWidth disabled={!canContinue} onClick={next}>
-          {step === "welcome" ? "Let's start" : step === "plan" ? "Start learning" : "Continue"}
+          {step === "welcome" ? "Let's start" : step === "plan" ? (level && level !== "new" ? "Find my starting point" : "Start learning") : "Continue"}
         </Button>
         {step === "name" && <Button variant="ghost" fullWidth onClick={next}>Skip</Button>}
       </div>

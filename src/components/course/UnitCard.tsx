@@ -50,6 +50,7 @@ export function UnitCard({ unit, state, nextLessonId, defaultOpen }: UnitCardPro
               index={i + 1}
               status={status}
               isNext={lesson.id === nextLessonId}
+              placedOut={state.lessons[lesson.id]?.placedOut}
               blockedBy={status === "locked" ? (prev?.title ?? "the previous unit") : undefined}
             />
           );

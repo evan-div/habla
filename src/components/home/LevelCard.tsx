@@ -4,11 +4,11 @@ import { ProgressBar } from "@/components/ui/ProgressBar";
 import { ALL_LESSONS } from "@/content/course";
 import { levelInfo } from "@/lib/gamification/levels";
 import type { LearnerState } from "@/lib/state/types";
-import { lessonsCompletedCount } from "@/lib/state/selectors";
+import { lessonsDoneCount } from "@/lib/state/selectors";
 
 export function LevelCard({ state }: { state: LearnerState }) {
   const info = levelInfo(state.totalXp);
-  const lessonsDone = lessonsCompletedCount(state);
+  const lessonsDone = lessonsDoneCount(state);
   return (
     <Card padding="md" className="flex h-full flex-col">
       <h2 className="text-sm font-extrabold uppercase tracking-widest text-muted">Your Spanish</h2>

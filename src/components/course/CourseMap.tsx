@@ -8,7 +8,7 @@ import { ProgressBar } from "@/components/ui/ProgressBar";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { ALL_LESSONS, COURSE } from "@/content/course";
 import { useLearner } from "@/lib/state/hooks";
-import { lessonsCompletedCount, nextLesson } from "@/lib/state/selectors";
+import { lessonsDoneCount, nextLesson } from "@/lib/state/selectors";
 import { UnitCard } from "./UnitCard";
 
 export function CourseMap() {
@@ -23,7 +23,7 @@ export function CourseMap() {
   }
   const { state } = learner;
   const up = nextLesson(state);
-  const done = lessonsCompletedCount(state);
+  const done = lessonsDoneCount(state);
 
   return (
     <PageContainer className="max-w-4xl">

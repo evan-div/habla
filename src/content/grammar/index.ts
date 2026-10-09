@@ -1,9 +1,10 @@
 import type { GrammarConcept } from "../types";
 import { FOUNDATIONS } from "./foundations";
 import { VERB_CONCEPTS } from "./verbs";
+import { EVERYDAY } from "./everyday";
 import { ROADMAP } from "./roadmap";
 
-export const GRAMMAR_CONCEPTS: readonly GrammarConcept[] = [...FOUNDATIONS, ...VERB_CONCEPTS, ...ROADMAP];
+export const GRAMMAR_CONCEPTS: readonly GrammarConcept[] = [...FOUNDATIONS, ...VERB_CONCEPTS, ...EVERYDAY, ...ROADMAP];
 
 const BY_ID: ReadonlyMap<string, GrammarConcept> = new Map(GRAMMAR_CONCEPTS.map((g) => [g.id, g]));
 

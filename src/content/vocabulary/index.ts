@@ -4,6 +4,8 @@ import { INTRODUCTIONS, NUMBERS, PLACES, PRONOUNS } from "./identity";
 import { DESCRIBING, TENER_EXPRESSIONS, VERBS } from "./essentials";
 import { DETERMINERS, FAMILY, PEOPLE, SLANG } from "./people";
 import { DRINKS, FOODS, RESTAURANT } from "./food";
+import { QUESTION_WORDS } from "./questions";
+import { TOWN } from "./town";
 
 export const VOCABULARY: readonly VocabEntry[] = [
   ...GREETINGS,
@@ -21,6 +23,8 @@ export const VOCABULARY: readonly VocabEntry[] = [
   ...DRINKS,
   ...FOODS,
   ...RESTAURANT,
+  ...QUESTION_WORDS,
+  ...TOWN,
 ];
 
 const BY_ID: ReadonlyMap<string, VocabEntry> = new Map(VOCABULARY.map((v) => [v.id, v]));

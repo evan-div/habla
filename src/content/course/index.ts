@@ -4,6 +4,8 @@ import { unit02 } from "./units/unit-02-introductions";
 import { unit03 } from "./units/unit-03-verbs";
 import { unit04 } from "./units/unit-04-people";
 import { unit05 } from "./units/unit-05-food";
+import { unit06 } from "./units/unit-06-questions";
+import { unit07 } from "./units/unit-07-places";
 
 function comingSoon(id: string, sectionId: string, number: number, title: string, description: string, icon: string, preview: string[], accent: Unit["accent"]): Unit {
   return { id, sectionId, number, title, description, icon, accent, lessons: [], comingSoon: true, preview };
@@ -24,8 +26,8 @@ const section2: Section = {
   description: "Food, questions and everything you need to say what you mean.",
   units: [
     unit05,
-    comingSoon("unit-06-questions", "section-2-sentences", 6, "Question Words", "Who, what, where, when, why — ask anything.", "help-circle", ["¿Quién? ¿Qué? ¿Cuándo?", "¿Por qué? / porque", "Making small talk"], "violet"),
-    comingSoon("unit-07-places", "section-2-sentences", 7, "Places & Directions", "Find your way around a Mexican city.", "map-pin", ["Estar + places", "Left, right, straight", "Asking for directions"], "teal"),
+    unit06,
+    unit07,
     comingSoon("unit-08-verbs", "section-2-sentences", 8, "Present-Tense Verbs", "Go deeper: dozens of regular and irregular verbs.", "zap", ["-ar / -er / -ir in depth", "Daily routines", "Irregular yo forms"], "sol"),
   ],
 };

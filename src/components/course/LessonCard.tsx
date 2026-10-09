@@ -16,9 +16,11 @@ interface LessonCardProps {
   isNext: boolean;
   /** Title of the lesson that must be finished first (for locked rows). */
   blockedBy?: string;
+  /** Marked done by the placement check rather than played. */
+  placedOut?: boolean;
 }
 
-export function LessonCard({ lesson, index, status, isNext, blockedBy }: LessonCardProps) {
+export function LessonCard({ lesson, index, status, isNext, blockedBy, placedOut }: LessonCardProps) {
   const words = introducedWordIds(lesson.exercises).length;
   const grammar = grammarTaught(lesson).map((id) => getGrammar(id)?.title).filter(Boolean) as string[];
   const locked = status === "locked";
@@ -45,6 +47,7 @@ export function LessonCard({ lesson, index, status, isNext, blockedBy }: LessonC
         </span>
         <span className="mt-0.5 block text-[15px] text-muted">{lesson.subtitle}</span>
         <span className="mt-2 flex flex-wrap items-center gap-1.5">
+          {placedOut && <Badge tone="sol">Skipped · placement</Badge>}
           <Badge tone="neutral" icon={<Clock size={12} aria-hidden="true" />}>~{lesson.estimatedMinutes} min</Badge>
           {words > 0 && <Badge tone="teal">{words} new {words === 1 ? "word" : "words"}</Badge>}
           {grammar.map((g) => <Badge key={g} tone="violet">{g}</Badge>)}
@@ -60,7 +63,7 @@ export function LessonCard({ lesson, index, status, isNext, blockedBy }: LessonC
           )}
           aria-hidden="true"
         >
-          {isNext ? "Start" : status === "completed" ? "Practice" : "Start"}
+          {isNext ? "Start" : status === "completed" ? (placedOut ? "Play" : "Practice") : "Start"}
           <ArrowRight size={16} />
         </span>
       )}

@@ -117,8 +117,19 @@ export function completedUnitIds(state: LearnerState): string[] {
   return ALL_UNITS.filter((u) => unitProgress(state, u).done).map((u) => u.id);
 }
 
+/** Lessons the learner actually played (excludes lessons skipped by placement). */
 export function lessonsCompletedCount(state: LearnerState): number {
+  return Object.values(state.lessons).filter((l) => !l.placedOut).length;
+}
+
+/** Lessons marked done, played or skipped — for course progress bars. */
+export function lessonsDoneCount(state: LearnerState): number {
   return Object.keys(state.lessons).length;
+}
+
+/** Units finished by playing — a unit skipped entirely by placement doesn't count as an achievement. */
+export function unitsCompletedByPlay(state: LearnerState): string[] {
+  return ALL_UNITS.filter((u) => unitProgress(state, u).done && u.lessons.some((l) => !state.lessons[l.id]?.placedOut)).map((u) => u.id);
 }
 
 /* ---- Gamification ------------------------------------------------- */
@@ -136,7 +147,7 @@ export function achievementStats(state: LearnerState, now: number): AchievementS
     currentStreak: streak.current,
     longestStreak: streak.longest,
     reviewCardsCompleted: state.counters.reviewCardsCompleted,
-    unitsCompleted: completedUnitIds(state),
+    unitsCompleted: unitsCompletedByPlay(state),
     realTalkLessons: state.counters.realTalkLessons,
     dailyGoalsHit: state.counters.dailyGoalsHit,
     level: levelForXp(state.totalXp),
