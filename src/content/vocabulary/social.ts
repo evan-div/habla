@@ -1,0 +1,42 @@
+import { entries, present } from "./helpers";
+
+const reg = (inf: string, group: "ar" | "er" | "ir", forms: [string, string, string, string, string], translation: string) => ({
+  infinitive: inf,
+  translation,
+  regularOrIrregular: "regular" as const,
+  group,
+  conjugations: present(forms),
+});
+
+export const SOCIAL = entries("social", [
+  { id: "me-gusta", es: "me gusta", en: "I like (it)", pos: "expression", d: 2, ex: ["Me gusta la música.", "I like music."], pron: "meh GOOS-tah", note: "Literally “it pleases me”: the thing you like is the subject. Me gusta el café; me gustan los tacos." },
+  { id: "te-gusta", es: "¿te gusta?", en: "do you like (it)?", pos: "expression", d: 2, ex: ["¿Te gusta el fútbol?", "Do you like soccer?"], pron: "teh GOOS-tah" },
+  { id: "me-gustan", es: "me gustan", en: "I like (them)", pos: "expression", d: 2, ex: ["Me gustan los tacos.", "I like tacos."], pron: "meh GOOS-tahn", note: "Several things → gustan." },
+  { id: "me-encanta", es: "me encanta", en: "I love (it)", pos: "expression", d: 2, ex: ["Me encanta bailar.", "I love dancing."], pron: "meh ehn-KAHN-tah", note: "Stronger than me gusta. Plural: me encantan." },
+  { id: "pelicula", es: "película", en: "movie / film", pos: "noun", g: "f", pl: "películas", ex: ["Me gusta la película.", "I like the movie."], pron: "peh-LEE-koo-lah" },
+  { id: "futbol", es: "fútbol", en: "soccer", pos: "noun", g: "m", ex: ["Me gusta el fútbol.", "I like soccer."], pron: "FOOT-bohl", note: "A national passion in Mexico — you'll hear “¡gol!” everywhere on match days." },
+  { id: "bueno", es: "bueno", en: "good", pos: "adjective", fem: "buena", ex: ["La película es muy buena.", "The movie is very good."], pron: "BWEH-noh", note: "Before a masculine noun it shortens to buen: un buen café." },
+  { id: "malo", es: "malo", en: "bad", pos: "adjective", fem: "mala", ex: ["El café es malo.", "The coffee is bad."], pron: "MAH-loh", note: "Shortens to mal before a masculine noun: un mal día. Don't confuse with mal (“badly”)." },
+  { id: "jugar", es: "jugar", en: "to play", pos: "verb", d: 2, ex: ["Juego fútbol los domingos.", "I play soccer on Sundays."], pron: "hoo-GAR", note: "The only common u → ue verb. Careful: juego (I play) vs. jugo (juice)!", verb: { infinitive: "jugar", translation: "to play", regularOrIrregular: "stem-changing", group: "ar", stemChange: "u → ue", conjugations: present(["juego", "juegas", "juega", "jugamos", "juegan"]) } },
+  { id: "correr", es: "correr", en: "to run", pos: "verb", ex: ["Corro por la mañana.", "I run in the morning."], pron: "koh-RREHR", verb: reg("correr", "er", ["corro", "corres", "corre", "corremos", "corren"], "to run") },
+  { id: "nadar", es: "nadar", en: "to swim", pos: "verb", ex: ["Nado los sábados.", "I swim on Saturdays."], pron: "nah-DAR", note: "Ella nada = she swims — and nada also means “nothing”.", verb: reg("nadar", "ar", ["nado", "nadas", "nada", "nadamos", "nadan"], "to swim") },
+  { id: "viajar", es: "viajar", en: "to travel", pos: "verb", ex: ["Me gusta viajar.", "I like to travel."], pron: "byah-HAR", verb: reg("viajar", "ar", ["viajo", "viajas", "viaja", "viajamos", "viajan"], "to travel") },
+  { id: "cantar", es: "cantar", en: "to sing", pos: "verb", ex: ["Mi hermana canta muy bien.", "My sister sings very well."], pron: "kahn-TAR", verb: reg("cantar", "ar", ["canto", "cantas", "canta", "cantamos", "cantan"], "to sing") },
+  { id: "fin-de-semana", es: "fin de semana", en: "weekend", pos: "noun", g: "m", pl: "fines de semana", ex: ["El fin de semana viajo a casa.", "On the weekend I go home."], pron: "feen deh seh-MAH-nah" },
+  { id: "tiempo-libre", es: "tiempo libre", en: "free time", pos: "expression", ex: ["En mi tiempo libre leo.", "In my free time I read."], pron: "TYEHM-poh LEE-breh" },
+  { id: "chamba", es: "chamba", en: "job / work", pos: "noun", g: "f", reg: "slang", regions: ["mx"], d: 2, ex: ["Tengo mucha chamba.", "I have a lot of work."], pron: "CHAHM-bah", note: "Everyday Mexican slang for work. “Chambear” = to work." },
+  { id: "lana", es: "lana", en: "money", pos: "noun", g: "f", reg: "slang", regions: ["mx"], d: 2, ex: ["No tengo lana.", "I don't have any money."], pron: "LAH-nah", note: "Literally “wool” — slang for money in Mexico." },
+  { id: "fresa", es: "fresa", en: "posh / preppy", pos: "adjective", reg: "slang", regions: ["mx"], d: 3, ex: ["Ella es muy fresa.", "She's very posh."], pron: "FREH-sah", note: "Literally “strawberry”. Describes a privileged, preppy style — can be playful or mildly mocking depending on tone." },
+  { id: "padrisimo", es: "padrísimo", en: "super cool", pos: "adjective", fem: "padrísima", reg: "slang", regions: ["mx"], d: 3, ex: ["¡Qué padrísimo!", "How awesome!"], pron: "pah-DREE-see-moh", note: "Padre (cool) + -ísimo (very): the volume knob on ¡qué padre!", rel: ["que-padre"] },
+  { id: "orale", es: "¡órale!", en: "wow! / okay! / come on!", pos: "expression", reg: "slang", regions: ["mx"], d: 3, ex: ["¡Órale! ¡Qué padre!", "Wow! How cool!"], pron: "OH-rah-leh", note: "The most Mexican interjection there is: surprise, agreement (“okay, sure”), encouragement (“let's go!”) — tone decides." },
+  { id: "no-manches", es: "no manches", en: "no way! / come on!", pos: "expression", reg: "slang", regions: ["mx"], d: 3, ex: ["¡No manches! ¿Cien pesos?", "No way! A hundred pesos?"], pron: "noh MAHN-chehs", note: "A milder, more polite-sounding cousin of the vulgar no mames — still informal.", rel: ["no-mames"] },
+  { id: "pinche", es: "pinche", en: "damn / lousy", pos: "adjective", reg: "vulgar", regions: ["mx"], d: 3, ex: ["¡Qué pinche calor!", "What a damn heat!"], pron: "PEEN-cheh", note: "A very common vulgar intensifier in Mexico — fine among close friends, never at work, with elders, or with people you've just met." },
+  { id: "creo-que", es: "creo que", en: "I think that", pos: "expression", d: 2, ex: ["Creo que es muy caro.", "I think it's very expensive."], pron: "KREH-oh keh", note: "Creer = to believe / think. Say creo que before an opinion." },
+  { id: "en-serio", es: "¿en serio?", en: "really? / seriously?", pos: "expression", ex: ["—Tengo cuarenta años. —¿En serio?", "—I'm forty. —Really?"], pron: "ehn SEH-ryoh" },
+  { id: "de-verdad", es: "de verdad", en: "really / truly", pos: "expression", ex: ["Es de verdad muy bueno.", "It's really very good."], pron: "deh behr-DAHD", note: "Also a question: ¿De verdad? = Really?" },
+  { id: "por-supuesto", es: "por supuesto", en: "of course", pos: "expression", ex: ["¿Puedes venir? —¡Por supuesto!", "Can you come? —Of course!"], pron: "por soo-PWEHS-toh" },
+  { id: "esta-bien", es: "está bien", en: "it's fine / OK", pos: "expression", ex: ["Está bien, voy a la fiesta.", "OK, I'll go to the party."], pron: "ehs-TAH byehn" },
+  { id: "no-pasa-nada", es: "no pasa nada", en: "no worries / it's fine", pos: "expression", ex: ["Perdón. —No pasa nada.", "Sorry. —No worries."], pron: "noh PAH-sah NAH-dah", note: "Literally “nothing happens”. The warm, everyday way to wave off an apology." },
+  { id: "que-lastima", es: "¡qué lástima!", en: "what a pity!", pos: "expression", ex: ["¡Qué lástima! No puedes venir.", "What a pity! You can't come."], pron: "keh LAHS-tee-mah" },
+  { id: "que-bueno", es: "¡qué bueno!", en: "how great! / that's good!", pos: "expression", ex: ["¡Qué bueno que vienes!", "How great that you're coming!"], pron: "keh BWEH-noh" },
+]);

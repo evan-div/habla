@@ -6,6 +6,11 @@ import { unit04 } from "./units/unit-04-people";
 import { unit05 } from "./units/unit-05-food";
 import { unit06 } from "./units/unit-06-questions";
 import { unit07 } from "./units/unit-07-places";
+import { unit08 } from "./units/unit-08-verbs";
+import { unit09 } from "./units/unit-09-plans";
+import { unit10 } from "./units/unit-10-shopping";
+import { unit11 } from "./units/unit-11-work";
+import { unit12 } from "./units/unit-12-social";
 
 function comingSoon(id: string, sectionId: string, number: number, title: string, description: string, icon: string, preview: string[], accent: Unit["accent"]): Unit {
   return { id, sectionId, number, title, description, icon, accent, lessons: [], comingSoon: true, preview };
@@ -28,7 +33,7 @@ const section2: Section = {
     unit05,
     unit06,
     unit07,
-    comingSoon("unit-08-verbs", "section-2-sentences", 8, "Present-Tense Verbs", "Go deeper: dozens of regular and irregular verbs.", "zap", ["-ar / -er / -ir in depth", "Daily routines", "Irregular yo forms"], "sol"),
+    unit08,
   ],
 };
 
@@ -38,10 +43,22 @@ const section3: Section = {
   title: "Everyday Spanish",
   description: "Make plans, shop, work and hang out like a local.",
   units: [
-    comingSoon("unit-09-plans", "section-3-everyday", 9, "Making Plans", "Invite friends and arrange to meet.", "calendar", ["Days & times", "Ir a + infinitive", "Accepting & declining"], "rosa"),
-    comingSoon("unit-10-shopping", "section-3-everyday", 10, "Shopping", "Prices, sizes and bargaining at the mercado.", "shopping-bag", ["Numbers to 1,000", "Clothes & colors", "¿Cuánto cuesta?"], "leaf"),
-    comingSoon("unit-11-work", "section-3-everyday", 11, "Work & School", "Talk about your day, job and studies.", "briefcase", ["Occupations", "Schedules", "Telling time"], "teal"),
-    comingSoon("unit-12-social", "section-3-everyday", 12, "Friends & Social Life", "Parties, music and casual conversation.", "party-popper", ["Slang & humor", "Invitations", "Likes & dislikes"], "rosa"),
+    unit09,
+    unit10,
+    unit11,
+    unit12,
+  ],
+};
+
+const section4: Section = {
+  id: "section-4-stories",
+  number: 4,
+  title: "Telling Stories",
+  description: "Talk about the past: what happened, how things used to be, and trips you've taken.",
+  units: [
+    comingSoon("unit-13-preterite", "section-4-stories", 13, "What Happened", "The preterite: yesterday, last week, last summer.", "calendar", ["Regular preterite", "Ayer, anoche, la semana pasada", "Ser / ir in the past"], "rosa"),
+    comingSoon("unit-14-imperfect", "section-4-stories", 14, "How Things Were", "The imperfect: childhood memories and background scenes.", "book-open", ["Imperfect endings", "Cuando era niño…", "Preterite vs. imperfect"], "violet"),
+    comingSoon("unit-15-travel", "section-4-stories", 15, "Travel & Culture", "Trips, hotels, holidays and Mexican traditions.", "map-pin", ["Hotels & airports", "Fiestas y tradiciones", "Plans and wishes"], "teal"),
   ],
 };
 
@@ -51,7 +68,7 @@ export const COURSE: Course = {
   tagline: "Mexican Spanish for English speakers",
   language: "es",
   dialect: "es-MX",
-  sections: [section1, section2, section3],
+  sections: [section1, section2, section3, section4],
 };
 
 /* ------------------------------------------------------------------ */

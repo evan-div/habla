@@ -4,8 +4,13 @@ import { INTRODUCTIONS, NUMBERS, PLACES, PRONOUNS } from "./identity";
 import { DESCRIBING, TENER_EXPRESSIONS, VERBS } from "./essentials";
 import { DETERMINERS, FAMILY, PEOPLE, SLANG } from "./people";
 import { DRINKS, FOODS, RESTAURANT } from "./food";
+import { ACTIONS } from "./actions";
+import { PLANS } from "./plans";
 import { QUESTION_WORDS } from "./questions";
+import { SHOPPING } from "./shopping";
+import { SOCIAL } from "./social";
 import { TOWN } from "./town";
+import { WORK } from "./work";
 
 export const VOCABULARY: readonly VocabEntry[] = [
   ...GREETINGS,
@@ -25,6 +30,11 @@ export const VOCABULARY: readonly VocabEntry[] = [
   ...RESTAURANT,
   ...QUESTION_WORDS,
   ...TOWN,
+  ...ACTIONS,
+  ...PLANS,
+  ...SHOPPING,
+  ...WORK,
+  ...SOCIAL,
 ];
 
 const BY_ID: ReadonlyMap<string, VocabEntry> = new Map(VOCABULARY.map((v) => [v.id, v]));

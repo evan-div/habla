@@ -56,6 +56,41 @@ const LEVELS: Array<{ unitNumber: number; questions: ExerciseDraft[] }> = [
       gq("Choose the correct form.", "al", ["a el", "a la"], { sentence: "Voy ___ mercado." }),
     ],
   },
+  {
+    unitNumber: 8,
+    questions: [
+      gq("Choose the correct form.", "salgo", ["salo", "sale"], { sentence: "Yo ___ de casa los lunes." }),
+      gq("Which sentence is correct?", "Nunca como carne", ["Nunca no como carne", "No nunca como carne"], {}),
+    ],
+  },
+  {
+    unitNumber: 9,
+    questions: [
+      gq("Es or son?", "Son", ["Es", "Está"], { sentence: "___ las tres y media." }),
+      ask("A friend invites you but you can't come. Which reply is most polite?", "Lo siento, no puedo. ¡Otro día!", ["No quiero", "Tal vez no"]),
+    ],
+  },
+  {
+    unitNumber: 10,
+    questions: [
+      gq("How do you say 35?", "treinta y cinco", ["treinta cinco", "tres y cinco"], {}),
+      ask("You like a jacket at the market. How do you ask for a better price?", "¿Cuál es su último precio?", ["¿Dónde está el baño?", "¿Qué hora es?"]),
+    ],
+  },
+  {
+    unitNumber: 11,
+    questions: [
+      gq("Which sentence is correct?", "Llamo a mi jefe", ["Llamo mi jefe", "Llamo de mi jefe"], {}),
+      ask("You didn't understand someone. What do you say?", "No entiendo. ¿Puede hablar más despacio?", ["No sé. ¿Quién es?", "Está bien, gracias"]),
+    ],
+  },
+  {
+    unitNumber: 12,
+    questions: [
+      gq("Gusta or gustan?", "gustan", ["gusta", "gusto"], { sentence: "Me ___ los tacos." }),
+      ask("A friend can't come to your party. What do you say?", "¡Qué lástima!", ["¡Qué bueno!", "¡Qué rico!"]),
+    ],
+  },
 ];
 
 export interface PlacementLevel {

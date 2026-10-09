@@ -1,0 +1,58 @@
+import { entries, present } from "./helpers";
+
+const num = (id: string, es: string, en: string, pron: string, ex: [string, string], note?: string, fem?: string) => ({ id, es, en, pron, ex, note, fem, pos: "number" as const });
+
+export const SHOPPING = entries("shopping", [
+  num("cincuenta", "cincuenta", "fifty", "seen-KWEHN-tah", ["Son cincuenta pesos.", "That's fifty pesos."]),
+  num("sesenta", "sesenta", "sixty", "seh-SEHN-tah", ["Mi abuelo tiene sesenta años.", "My grandfather is sixty."]),
+  num("setenta", "setenta", "seventy", "seh-TEHN-tah", ["Tengo setenta amigos.", "I have seventy friends."]),
+  num("ochenta", "ochenta", "eighty", "oh-CHEHN-tah", ["Mi abuela tiene ochenta años.", "My grandmother is eighty."]),
+  num("noventa", "noventa", "ninety", "noh-BEHN-tah", ["El hotel tiene noventa cuartos.", "The hotel has ninety rooms."]),
+  num("cien", "cien", "one hundred", "SYEHN", ["Son cien pesos.", "That's a hundred pesos."], "Exactly 100 is cien; with more it becomes ciento: ciento diez = 110."),
+  num("doscientos", "doscientos", "two hundred", "dohs-SYEHN-tohs", ["Son doscientos pesos.", "That's two hundred pesos."], "Hundreds agree with what they count: doscientos pesos, doscientas casas.", "doscientas"),
+  num("quinientos", "quinientos", "five hundred", "kee-NYEHN-tohs", ["Son quinientos pesos.", "That's five hundred pesos."], "Irregular! Not “cincocientos”. Feminine: quinientas.", "quinientas"),
+  num("mil", "mil", "one thousand", "meel", ["Son mil pesos.", "That's a thousand pesos."], "Mil never takes -es for “a thousand”: mil pesos, dos mil pesos."),
+  { id: "peso", es: "peso", en: "peso", pos: "noun", g: "m", pl: "pesos", ex: ["Son diez pesos.", "That's ten pesos."], pron: "PEH-soh", note: "The Mexican peso. Prices are written with $ — the same sign as dollars." },
+  { id: "cuanto-cuesta", es: "¿cuánto cuesta?", en: "how much does it cost?", pos: "expression", d: 2, ex: ["¿Cuánto cuesta el taco?", "How much does the taco cost?"], pron: "KWAHN-toh KWEHS-tah", note: "Use cuestan for several things: ¿cuánto cuestan los zapatos?" },
+  { id: "caro", es: "caro", en: "expensive", pos: "adjective", fem: "cara", ex: ["El hotel es muy caro.", "The hotel is very expensive."], pron: "KAH-roh" },
+  { id: "barato", es: "barato", en: "cheap / inexpensive", pos: "adjective", fem: "barata", ex: ["El mercado es barato.", "The market is cheap."], pron: "bah-RAH-toh" },
+  { id: "tarjeta", es: "tarjeta", en: "card", pos: "noun", g: "f", pl: "tarjetas", ex: ["¿Puedo pagar con tarjeta?", "Can I pay by card?"], pron: "tar-HEH-tah", note: "Small shops and market stalls in Mexico often take cash only — it's fair to ask first." },
+  { id: "efectivo", es: "efectivo", en: "cash", pos: "noun", g: "m", ex: ["Pago en efectivo.", "I pay in cash."], pron: "eh-fehk-TEE-boh" },
+  { id: "cambio", es: "cambio", en: "change", pos: "noun", g: "m", ex: ["¿Tiene cambio?", "Do you have change?"], pron: "KAHM-byoh", note: "Also “exchange” or “change” in general. Small bills are gold in Mexico — vendors often can't break a 500." },
+  {
+    id: "pagar", es: "pagar", en: "to pay", pos: "verb", ex: ["Pago con tarjeta.", "I pay by card."], pron: "pah-GAR",
+    verb: { infinitive: "pagar", translation: "to pay", regularOrIrregular: "regular", group: "ar", conjugations: present(["pago", "pagas", "paga", "pagamos", "pagan"]) },
+  },
+  { id: "ropa", es: "ropa", en: "clothes", pos: "noun", g: "f", ex: ["La ropa es cara aquí.", "Clothes are expensive here."], pron: "RROH-pah", note: "Ropa is singular in Spanish: la ropa es nueva (the clothes are new)." },
+  { id: "camisa", es: "camisa", en: "shirt", pos: "noun", g: "f", pl: "camisas", ex: ["La camisa es nueva.", "The shirt is new."], pron: "kah-MEE-sah" },
+  { id: "playera", es: "playera", en: "T-shirt", pos: "noun", g: "f", pl: "playeras", regions: ["mx"], ex: ["Mi playera es muy barata.", "My T-shirt is very cheap."], pron: "plah-YEH-rah", rn: [["es", "In Spain, a T-shirt is a camiseta."]] },
+  { id: "pantalones", es: "pantalones", en: "pants", pos: "noun", g: "m", ex: ["Los pantalones son grandes.", "The pants are big."], pron: "pahn-tah-LOH-nehs", note: "Always plural in Spanish: los pantalones, unos pantalones." },
+  { id: "zapatos", es: "zapatos", en: "shoes", pos: "noun", g: "m", ex: ["Los zapatos son caros.", "The shoes are expensive."], pron: "sah-PAH-tohs" },
+  { id: "vestido", es: "vestido", en: "dress", pos: "noun", g: "m", pl: "vestidos", ex: ["El vestido es nuevo.", "The dress is new."], pron: "behs-TEE-doh" },
+  { id: "chamarra", es: "chamarra", en: "jacket", pos: "noun", g: "f", pl: "chamarras", regions: ["mx"], ex: ["Necesito una chamarra.", "I need a jacket."], pron: "chah-MAH-rrah", rn: [["es", "In Spain, a jacket is a chaqueta."]] },
+  { id: "bolsa", es: "bolsa", en: "bag / purse", pos: "noun", g: "f", pl: "bolsas", ex: ["La bolsa es nueva.", "The bag is new."], pron: "BOHL-sah", note: "In Mexico bolsa covers both a handbag and a plastic shopping bag." },
+  { id: "rojo", es: "rojo", en: "red", pos: "adjective", fem: "roja", ex: ["La chamarra es roja.", "The jacket is red."], pron: "RROH-hoh" },
+  { id: "azul", es: "azul", en: "blue", pos: "adjective", ex: ["El vestido es azul.", "The dress is blue."], pron: "ah-SOOL", note: "Same for masculine and feminine; plural is azules." },
+  { id: "verde", es: "verde", en: "green", pos: "adjective", ex: ["El vestido verde es caro.", "The green dress is expensive."], pron: "BEHR-deh" },
+  { id: "negro", es: "negro", en: "black", pos: "adjective", fem: "negra", ex: ["Los zapatos son negros.", "The shoes are black."], pron: "NEH-groh" },
+  { id: "blanco", es: "blanco", en: "white", pos: "adjective", fem: "blanca", ex: ["La camisa es blanca.", "The shirt is white."], pron: "BLAHN-koh" },
+  { id: "amarillo", es: "amarillo", en: "yellow", pos: "adjective", fem: "amarilla", d: 2, ex: ["Quiero una playera amarilla.", "I want a yellow T-shirt."], pron: "ah-mah-REE-yoh" },
+  { id: "talla", es: "talla", en: "size (clothes)", pos: "noun", g: "f", pl: "tallas", ex: ["¿Qué talla eres?", "What size are you?"], pron: "TAH-yah", note: "Clothes have a talla; shoes have a número." },
+  { id: "me-queda", es: "me queda", en: "it fits me", pos: "expression", d: 3, ex: ["Me queda bien.", "It fits me well."], pron: "meh KEH-dah", note: "Plural: me quedan. “Me queda grande” = it's too big on me." },
+  {
+    id: "comprar", es: "comprar", en: "to buy", pos: "verb", ex: ["Compro pan en el mercado.", "I buy bread at the market."], pron: "kohm-PRAR",
+    verb: { infinitive: "comprar", translation: "to buy", regularOrIrregular: "regular", group: "ar", conjugations: present(["compro", "compras", "compra", "compramos", "compran"]) },
+  },
+  {
+    id: "llevar", es: "llevar", en: "to take / carry / wear", pos: "verb", ex: ["Llevo una chamarra roja.", "I'm wearing a red jacket."], pron: "yeh-BAR", note: "One verb, three jobs: take it, carry it, wear it.",
+    verb: { infinitive: "llevar", translation: "to take / carry / wear", regularOrIrregular: "regular", group: "ar", conjugations: present(["llevo", "llevas", "lleva", "llevamos", "llevan"]) },
+  },
+  { id: "precio", es: "precio", en: "price", pos: "noun", g: "m", pl: "precios", ex: ["¿Cuál es el precio?", "What's the price?"], pron: "PREH-syoh" },
+  {
+    id: "regatear", es: "regatear", en: "to haggle", pos: "verb", d: 2, ex: ["En el mercado puedes regatear.", "At the market you can haggle."], pron: "reh-gah-teh-AR", note: "In markets and tianguis, haggling is normal and friendly — in supermarkets, it isn't.",
+    verb: { infinitive: "regatear", translation: "to haggle", regularOrIrregular: "regular", group: "ar", conjugations: present(["regateo", "regateas", "regatea", "regateamos", "regatean"]) },
+  },
+  { id: "ultimo-precio", es: "¿cuál es su último precio?", en: "what's your best price?", pos: "expression", d: 3, regions: ["mx"], ex: ["¿Cuál es su último precio?", "What's your best price?"], pron: "kwahl ehs soo OOL-tee-moh PREH-syoh", note: "The classic Mexican bargaining line — literally “your last price”." },
+  { id: "lo-llevo", es: "lo llevo", en: "I'll take it", pos: "expression", d: 2, ex: ["Está bien, lo llevo.", "OK, I'll take it."], pron: "loh YEH-boh", note: "Lo = “it” (masculine). For a feminine thing say la llevo." },
+  { id: "a-cuanto", es: "¿a cuánto está?", en: "how much is it? (at a market)", pos: "expression", d: 2, regions: ["mx"], ex: ["¿A cuánto está la salsa?", "How much is the salsa?"], pron: "ah KWAHN-toh ehs-TAH", note: "At a market stall, this is the usual way to ask a price." },
+]);
