@@ -3,6 +3,7 @@ import { VOCABULARY } from "@/content/vocabulary";
 import { createWordProgress, masteryAt, masteryBand } from "@/lib/mastery/mastery";
 import type { LearnedWord } from "@/lib/state/selectors";
 import { evaluate } from "@/lib/engine/evaluate";
+import { perfectResponse } from "@/lib/engine/test-utils";
 import { buildReviewExercises } from "./review-generator";
 
 const NOW = 1_700_000_000_000;
@@ -47,6 +48,22 @@ describe("buildReviewExercises", () => {
     for (const ex of buildReviewExercises(strong, new Set(), "x").exercises) {
       if (ex.type === "translation") {
         expect(evaluate(ex, { kind: "text", value: ex.answers[0] }).correct).toBe(true);
+      }
+    }
+  });
+
+  it("builds answerable exercises for every word in the course, at every strength", () => {
+    const everyone = VOCABULARY.map((v) => v.id);
+    const known = new Set(everyone);
+    for (const strength of [0.1, 0.5, 0.95]) {
+      const learned = everyone.map((id) => asLearned(id, strength));
+      for (const ex of buildReviewExercises(learned, known, `all-${strength}`).exercises) {
+        if ("options" in ex && ex.options && "answer" in ex) {
+          expect(ex.options, ex.id).toContain(ex.answer);
+          expect(new Set(ex.options).size, ex.id).toBe(ex.options.length);
+        }
+        const response = perfectResponse(ex);
+        if (response) expect(evaluate(ex, response).correct, `${ex.id} (${ex.type})`).toBe(true);
       }
     }
   });

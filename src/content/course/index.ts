@@ -14,6 +14,9 @@ import { unit12 } from "./units/unit-12-social";
 import { unit13 } from "./units/unit-13-preterite";
 import { unit14 } from "./units/unit-14-imperfect";
 import { unit15 } from "./units/unit-15-travel";
+import { unit16 } from "./units/unit-16-routine";
+import { unit17 } from "./units/unit-17-pronouns";
+import { unit18 } from "./units/unit-18-commands";
 
 const section1: Section = {
   id: "section-1-foundations",
@@ -57,13 +60,21 @@ const section4: Section = {
   units: [unit13, unit14, unit15],
 };
 
+const section5: Section = {
+  id: "section-5-conversation",
+  number: 5,
+  title: "Real Conversations",
+  description: "Daily routines, object pronouns and commands: the grammar that makes you sound like a speaker.",
+  units: [unit16, unit17, unit18],
+};
+
 export const COURSE: Course = {
   id: "spanish-foundations",
   title: "Spanish Foundations",
   tagline: "Mexican Spanish for English speakers",
   language: "es",
   dialect: "es-MX",
-  sections: [section1, section2, section3, section4],
+  sections: [section1, section2, section3, section4, section5],
 };
 
 /* ------------------------------------------------------------------ */

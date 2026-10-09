@@ -93,6 +93,16 @@ describe("exercises", () => {
     }
   });
 
+  it("accept every listed alternative answer", () => {
+    for (const { lesson, exercise: e } of allExercises) {
+      const w = where(lesson.id, e);
+      if (e.type === "translation") for (const a of e.answers) expect(evaluate(e, { kind: "text", value: a }).correct, `${w} "${a}"`).toBe(true);
+      if (e.type === "sentenceOrder") for (const a of e.answers) expect(evaluate(e, { kind: "tiles", value: tokenize(a) }).correct, `${w} "${a}"`).toBe(true);
+      if (e.type === "fillBlank" && !e.options) for (const a of [e.answer, ...(e.accepted ?? [])]) expect(evaluate(e, { kind: "text", value: a }).correct, `${w} "${a}"`).toBe(true);
+      if (e.type === "listening" && e.mode === "type") for (const a of [e.answer, ...(e.accepted ?? [])]) expect(evaluate(e, { kind: "text", value: a }).correct, `${w} "${a}"`).toBe(true);
+    }
+  });
+
   it("have a single blank per fill-in sentence", () => {
     for (const { lesson, exercise: e } of allExercises) {
       if (e.type === "fillBlank") expect(e.sentence.split("___").length, where(lesson.id, e)).toBe(2);

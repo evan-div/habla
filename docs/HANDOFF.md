@@ -6,13 +6,13 @@ Repo: https://github.com/evan-div/habla (`main`, last pushed commit `674cf60`).
 ## State of the project
 
 **Working and verified**
-- 15 playable units, 76 lessons, ~1,500 exercises (incl. teaching cards), 436 words, 35 grammar topics, 2 *Real Talk* (slang/vulgar) lessons.
+- 18 playable units, 91 lessons, ~2,000 exercises (incl. teaching cards), 477 words, 44 grammar topics, 3 *Real Talk* (slang/vulgar) lessons.
 - Core loop: onboarding → (optional placement) → lesson → feedback → XP/streak/achievements → mastery update → spaced review → progress charts.
 - Pages: Home, Course, Vocabulary (+ word detail), Review (+ practice mode), Progress, Profile/Settings, Grammar reference, Onboarding, Placement.
-- `npm run check` = `tsc --noEmit` + ESLint + Vitest (82 tests). `npm run build` passes (126 static routes).
+- `npm run check` = `tsc --noEmit` + ESLint + Vitest (84 tests). `npm run build` passes (static routes for every unit/grammar topic).
 
 **Not built (deliberate)**: AI tutoring, speech recognition, accounts/cloud sync, leaderboards.
-**Section 4 "Telling Stories"** (Units 13–15: preterite, imperfect, travel & culture) is built; no units are stubbed on the map any more.
+**Sections 4–5** are built: "Telling Stories" (Units 13–15: preterite, imperfect, travel & culture) and "Real Conversations" (Units 16–18: reflexive verbs, object pronouns, commands). No units are stubbed on the map.
 
 ## Run it
 
@@ -52,7 +52,8 @@ Read `README.md` for architecture and `docs/AUTHORING.md` for adding content.
 8. **React 19.2 specifics:** `useEffectEvent` is used for global key handlers (satisfies the `react-hooks/refs` lint rule). Refs aren't written during render.
 9. **Running `next build` while `next dev` is up** floods the console with HMR websocket errors. Harmless; stop dev first.
 10. `vitest.config.mts` is `.mts` on purpose (avoids a Vite CJS-config warning).
-11. The `gh` CLI isn't installed on this machine; the repo remote was added by URL.
+11. Lessons unlock in order. To test a late unit in the browser, take the placement check (a deliberate wrong answer at the unit you want puts you there). Lesson route is `/learn/<lessonId>`. Two content tests are worth knowing: every listed alternative answer must evaluate as correct, and the review generator must build answerable exercises for every word.
+12. The `gh` CLI isn't installed on this machine; the repo remote was added by URL.
 
 ## Known gaps and risks
 
@@ -66,8 +67,8 @@ Read `README.md` for architecture and `docs/AUTHORING.md` for adding content.
 
 ## Suggested next steps (in rough priority)
 
-1. Native-speaker content review (especially Real Talk lessons, Units 9–15).
-2. Next content: Units 16+ (object pronouns, reflexive verbs, commands, future/conditional, comparisons — see the `planned(...)` entries in `content/grammar/roadmap.ts`). Past-tense forms are taught in grammar tables only; `VerbData` still stores present tense only, so the word-detail conjugation table doesn't show preterite/imperfect yet.
+1. Native-speaker content review (especially Real Talk lessons, Units 9–18).
+2. Next content: Units 19+ (future, conditional, comparisons, prepositions, subjunctive — see the `planned(...)` entries in `content/grammar/roadmap.ts`). Past-tense forms are taught in grammar tables only (reflexive verbs store the pronoun in the present table, e.g. `me levanto`); `VerbData` still stores present tense only, so the word-detail conjugation table doesn't show preterite/imperfect yet.
 3. Recorded audio for the highest-frequency words/phrases.
 4. Resume-mid-lesson (persist `SessionState` per lesson).
 5. Playwright tests for onboarding → lesson → review.

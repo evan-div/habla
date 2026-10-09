@@ -112,6 +112,27 @@ const LEVELS: Array<{ unitNumber: number; questions: ExerciseDraft[] }> = [
       ask("You lost your luggage at the airport. What do you say?", "Perdí mi maleta", ["Visité mi maleta", "Conocí mi maleta"]),
     ],
   },
+  {
+    unitNumber: 16,
+    questions: [
+      gq("Choose the right form.", "me levanto", ["levanto", "se levanta"], { sentence: "Yo ___ a las seis." }),
+      gq("Choose the right form.", "se acuestan", ["me acuesto", "se acuesta"], { sentence: "Mis padres ___ temprano." }),
+    ],
+  },
+  {
+    unitNumber: 17,
+    questions: [
+      gq("Choose the pronoun.", "La", ["Lo", "Le"], { sentence: "¿La camisa? ___ compro." }),
+      gq("Choose the pronouns.", "Te lo", ["Lo te", "Le lo"], { sentence: "___ mando mañana. (I'll send it to you.)" }),
+    ],
+  },
+  {
+    unitNumber: 18,
+    questions: [
+      gq("Choose the command (tú).", "Espera", ["Esperas", "Esperar"], { sentence: "¡___ un momento!" }),
+      gq("Choose the formal command.", "Doble", ["Dobla", "Doblo"], { sentence: "(To a stranger) ___ a la izquierda." }),
+    ],
+  },
 ];
 
 export interface PlacementLevel {
