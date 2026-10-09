@@ -11,6 +11,8 @@ import { SHOPPING } from "./shopping";
 import { SOCIAL } from "./social";
 import { TOWN } from "./town";
 import { WORK } from "./work";
+import { PAST } from "./past";
+import { TRAVEL } from "./travel";
 
 export const VOCABULARY: readonly VocabEntry[] = [
   ...GREETINGS,
@@ -35,6 +37,8 @@ export const VOCABULARY: readonly VocabEntry[] = [
   ...SHOPPING,
   ...WORK,
   ...SOCIAL,
+  ...PAST,
+  ...TRAVEL,
 ];
 
 const BY_ID: ReadonlyMap<string, VocabEntry> = new Map(VOCABULARY.map((v) => [v.id, v]));

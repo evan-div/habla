@@ -91,6 +91,27 @@ const LEVELS: Array<{ unitNumber: number; questions: ExerciseDraft[] }> = [
       ask("A friend can't come to your party. What do you say?", "¡Qué lástima!", ["¡Qué bueno!", "¡Qué rico!"]),
     ],
   },
+  {
+    unitNumber: 13,
+    questions: [
+      gq("Choose the correct form.", "comí", ["como", "comió"], { sentence: "Anoche yo ___ tacos." }),
+      ask("How do you say “Yesterday I went to the market”?", "Ayer fui al mercado", ["Ayer voy al mercado", "Ayer fue al mercado"]),
+    ],
+  },
+  {
+    unitNumber: 14,
+    questions: [
+      gq("Choose the right verb.", "vivía", ["viví", "vivo"], { sentence: "Cuando era niño, yo ___ en un pueblo." }),
+      gq("Choose the right verb.", "comía", ["comí", "comió"], { sentence: "Mientras yo ___, llegó mi hermano." }),
+    ],
+  },
+  {
+    unitNumber: 15,
+    questions: [
+      gq("Por or para?", "para", ["por", "pero"], { sentence: "Quiero una habitación ___ dos personas." }),
+      ask("You lost your luggage at the airport. What do you say?", "Perdí mi maleta", ["Visité mi maleta", "Conocí mi maleta"]),
+    ],
+  },
 ];
 
 export interface PlacementLevel {

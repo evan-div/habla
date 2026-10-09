@@ -20,14 +20,14 @@ use **Load sample progress**; use **+1 day** there to watch spaced repetition br
 
 ## What's in the course
 
-12 playable units (61 lessons, ~1,200 exercises, ~390 words and phrases) — Hello · Introducing Yourself ·
+15 playable units (76 lessons, ~1,500 exercises, ~435 words and phrases) — Hello · Introducing Yourself ·
 Essential Verbs · People & Family · Food & Drink · Question Words · Places & Directions · Present-Tense Verbs ·
-Making Plans · Shopping · Work & School · Friends & Social Life — with two uncensored, clearly labeled *Real Talk*
-lessons (slang and vulgar expressions behind a heads-up screen). The map continues into a "Telling Stories"
-section (the past tenses) marked *Coming soon*. 26 grammar topics are taught and explained; 11 more are on the
-roadmap.
+Making Plans · Shopping · Work & School · Friends & Social Life · What Happened (preterite) · How Things Were
+(imperfect) · Travel & Culture — with two uncensored, clearly labeled *Real Talk*
+lessons (slang and vulgar expressions behind a heads-up screen). 35 grammar topics are taught and explained; 8 more
+are on the roadmap.
 
-**Placement.** Learners who say they know some Spanish get a short, no-feedback check (two questions per unit across all 12 units,
+**Placement.** Learners who say they know some Spanish get a short, no-feedback check (two questions per unit across all 15 units,
 easiest first; it stops at the first level not fully passed). Accepting the result marks earlier lessons
 "skipped" and adds their words to the library at moderate mastery, spread over the next days of review so the
 assumption is checked gently. It's re-takeable from Profile. See `src/content/placement.ts` and `src/lib/placement.ts`.
