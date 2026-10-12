@@ -133,6 +133,27 @@ const LEVELS: Array<{ unitNumber: number; questions: ExerciseDraft[] }> = [
       gq("Choose the formal command.", "Doble", ["Dobla", "Doblo"], { sentence: "(To a stranger) ___ a la izquierda." }),
     ],
   },
+  {
+    unitNumber: 19,
+    questions: [
+      gq("Choose the future form.", "hablaré", ["hablo", "hablé"], { sentence: "Mañana yo ___ con mi jefe." }),
+      gq("Choose the correct form.", "llueve", ["lloverá", "llovió"], { sentence: "Si ___, me quedaré en casa." }),
+    ],
+  },
+  {
+    unitNumber: 20,
+    questions: [
+      gq("Choose the word.", "mejor", ["más bueno", "más mejor"], { sentence: "Este café es ___ que ese." }),
+      gq("Choose the word.", "como", ["que", "de"], { sentence: "Mi coche es tan rápido ___ tu coche." }),
+    ],
+  },
+  {
+    unitNumber: 21,
+    questions: [
+      gq("Choose the conditional.", "gustaría", ["gusta", "gustará"], { sentence: "Me ___ viajar a Japón." }),
+      ask("Which sounds the most polite?", "¿Podría ayudarme, por favor?", ["¿Puede ayudarme?", "¡Ayúdeme!"]),
+    ],
+  },
 ];
 
 export interface PlacementLevel {

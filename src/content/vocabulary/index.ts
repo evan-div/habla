@@ -16,6 +16,9 @@ import { TRAVEL } from "./travel";
 import { ROUTINE } from "./routine";
 import { PRONOUN_WORDS } from "./pronouns";
 import { COMMANDS } from "./commands";
+import { FUTURE } from "./future";
+import { COMPARE } from "./compare";
+import { WOULD } from "./conditional";
 
 export const VOCABULARY: readonly VocabEntry[] = [
   ...GREETINGS,
@@ -45,6 +48,9 @@ export const VOCABULARY: readonly VocabEntry[] = [
   ...ROUTINE,
   ...PRONOUN_WORDS,
   ...COMMANDS,
+  ...FUTURE,
+  ...COMPARE,
+  ...WOULD,
 ];
 
 const BY_ID: ReadonlyMap<string, VocabEntry> = new Map(VOCABULARY.map((v) => [v.id, v]));

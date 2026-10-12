@@ -17,6 +17,9 @@ import { unit15 } from "./units/unit-15-travel";
 import { unit16 } from "./units/unit-16-routine";
 import { unit17 } from "./units/unit-17-pronouns";
 import { unit18 } from "./units/unit-18-commands";
+import { unit19 } from "./units/unit-19-future";
+import { unit20 } from "./units/unit-20-compare";
+import { unit21 } from "./units/unit-21-conditional";
 
 const section1: Section = {
   id: "section-1-foundations",
@@ -68,13 +71,21 @@ const section5: Section = {
   units: [unit16, unit17, unit18],
 };
 
+const section6: Section = {
+  id: "section-6-further",
+  number: 6,
+  title: "Beyond the Present",
+  description: "Future plans, comparisons and polite hypotheticals: what's next, what's better, and what you would do.",
+  units: [unit19, unit20, unit21],
+};
+
 export const COURSE: Course = {
   id: "spanish-foundations",
   title: "Spanish Foundations",
   tagline: "Mexican Spanish for English speakers",
   language: "es",
   dialect: "es-MX",
-  sections: [section1, section2, section3, section4, section5],
+  sections: [section1, section2, section3, section4, section5, section6],
 };
 
 /* ------------------------------------------------------------------ */

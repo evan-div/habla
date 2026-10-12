@@ -6,13 +6,13 @@ Repo: https://github.com/evan-div/habla (`main`, last pushed commit `674cf60`).
 ## State of the project
 
 **Working and verified**
-- 18 playable units, 91 lessons, ~2,000 exercises (incl. teaching cards), 477 words, 44 grammar topics, 3 *Real Talk* (slang/vulgar) lessons.
+- 21 playable units, 106 lessons, ~2,400 exercises (incl. teaching cards), 517 words, 54 grammar topics, 3 *Real Talk* (slang/vulgar) lessons.
 - Core loop: onboarding → (optional placement) → lesson → feedback → XP/streak/achievements → mastery update → spaced review → progress charts.
 - Pages: Home, Course, Vocabulary (+ word detail), Review (+ practice mode), Progress, Profile/Settings, Grammar reference, Onboarding, Placement.
 - `npm run check` = `tsc --noEmit` + ESLint + Vitest (84 tests). `npm run build` passes (static routes for every unit/grammar topic).
 
 **Not built (deliberate)**: AI tutoring, speech recognition, accounts/cloud sync, leaderboards.
-**Sections 4–5** are built: "Telling Stories" (Units 13–15: preterite, imperfect, travel & culture) and "Real Conversations" (Units 16–18: reflexive verbs, object pronouns, commands). No units are stubbed on the map.
+**Sections 4–6** are built: "Telling Stories" (Units 13–15: preterite, imperfect, travel & culture), "Real Conversations" (Units 16–18: reflexive verbs, object pronouns, commands) and "Beyond the Present" (Units 19–21: future, comparisons, conditional). No units are stubbed on the map.
 
 ## Run it
 
@@ -67,8 +67,8 @@ Read `README.md` for architecture and `docs/AUTHORING.md` for adding content.
 
 ## Suggested next steps (in rough priority)
 
-1. Native-speaker content review (especially Real Talk lessons, Units 9–18).
-2. Next content: Units 19+ (future, conditional, comparisons, prepositions, subjunctive — see the `planned(...)` entries in `content/grammar/roadmap.ts`). Past-tense forms are taught in grammar tables only (reflexive verbs store the pronoun in the present table, e.g. `me levanto`); `VerbData` still stores present tense only, so the word-detail conjugation table doesn't show preterite/imperfect yet.
+1. Native-speaker content review (especially Real Talk lessons, Units 9–21).
+2. Next content: Units 22+ (the subjunctive is the big one — `ojalá` is already introduced as a standalone expression; plus prepositions, perfect tenses, more Real Talk). See the `planned(...)` entries in `content/grammar/roadmap.ts`. Past-tense forms are taught in grammar tables only (reflexive verbs store the pronoun in the present table, e.g. `me levanto`); `VerbData` still stores present tense only, so the word-detail conjugation table doesn't show preterite/imperfect yet.
 3. Recorded audio for the highest-frequency words/phrases.
 4. Resume-mid-lesson (persist `SessionState` per lesson).
 5. Playwright tests for onboarding → lesson → review.
