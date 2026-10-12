@@ -20,6 +20,9 @@ import { unit18 } from "./units/unit-18-commands";
 import { unit19 } from "./units/unit-19-future";
 import { unit20 } from "./units/unit-20-compare";
 import { unit21 } from "./units/unit-21-conditional";
+import { unit22 } from "./units/unit-22-progress";
+import { unit23 } from "./units/unit-23-subjunctive";
+import { unit24 } from "./units/unit-24-connect";
 
 const section1: Section = {
   id: "section-1-foundations",
@@ -79,13 +82,21 @@ const section6: Section = {
   units: [unit19, unit20, unit21],
 };
 
+const section7: Section = {
+  id: "section-7-nuance",
+  number: 7,
+  title: "Speaking With Nuance",
+  description: "What's happening, what you've done, what you hope — and the glue words that connect your ideas.",
+  units: [unit22, unit23, unit24],
+};
+
 export const COURSE: Course = {
   id: "spanish-foundations",
   title: "Spanish Foundations",
   tagline: "Mexican Spanish for English speakers",
   language: "es",
   dialect: "es-MX",
-  sections: [section1, section2, section3, section4, section5, section6],
+  sections: [section1, section2, section3, section4, section5, section6, section7],
 };
 
 /* ------------------------------------------------------------------ */

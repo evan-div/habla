@@ -154,6 +154,27 @@ const LEVELS: Array<{ unitNumber: number; questions: ExerciseDraft[] }> = [
       ask("Which sounds the most polite?", "¿Podría ayudarme, por favor?", ["¿Puede ayudarme?", "¡Ayúdeme!"]),
     ],
   },
+  {
+    unitNumber: 22,
+    questions: [
+      gq("Choose the gerund.", "comiendo", ["comido", "comer"], { sentence: "Mis padres están ___." }),
+      gq("Choose the form of HABER.", "he", ["has", "ha"], { sentence: "Nunca ___ probado el mole." }),
+    ],
+  },
+  {
+    unitNumber: 23,
+    questions: [
+      gq("Choose the form.", "vengas", ["vienes", "venir"], { sentence: "Quiero que tú ___ a mi fiesta." }),
+      gq("Subjunctive or indicative?", "tenga", ["tiene", "tendrá"], { sentence: "No creo que ella ___ tiempo." }),
+    ],
+  },
+  {
+    unitNumber: 24,
+    questions: [
+      gq("Choose the form.", "comer", ["comiendo", "como"], { sentence: "Me lavo las manos antes de ___." }),
+      gq("Choose the connector.", "sin embargo", ["porque", "por eso"], { sentence: "Es caro; ___, es muy bueno." }),
+    ],
+  },
 ];
 
 export interface PlacementLevel {

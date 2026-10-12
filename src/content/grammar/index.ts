@@ -5,9 +5,10 @@ import { EVERYDAY } from "./everyday";
 import { PAST_CONCEPTS } from "./past";
 import { CONVERSATION_CONCEPTS } from "./conversation";
 import { FURTHER_CONCEPTS } from "./further";
+import { NUANCE_CONCEPTS } from "./nuance";
 import { ROADMAP } from "./roadmap";
 
-export const GRAMMAR_CONCEPTS: readonly GrammarConcept[] = [...FOUNDATIONS, ...VERB_CONCEPTS, ...EVERYDAY, ...PAST_CONCEPTS, ...CONVERSATION_CONCEPTS, ...FURTHER_CONCEPTS, ...ROADMAP];
+export const GRAMMAR_CONCEPTS: readonly GrammarConcept[] = [...FOUNDATIONS, ...VERB_CONCEPTS, ...EVERYDAY, ...PAST_CONCEPTS, ...CONVERSATION_CONCEPTS, ...FURTHER_CONCEPTS, ...NUANCE_CONCEPTS, ...ROADMAP];
 
 const BY_ID: ReadonlyMap<string, GrammarConcept> = new Map(GRAMMAR_CONCEPTS.map((g) => [g.id, g]));
 

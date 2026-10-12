@@ -19,6 +19,9 @@ import { COMMANDS } from "./commands";
 import { FUTURE } from "./future";
 import { COMPARE } from "./compare";
 import { WOULD } from "./conditional";
+import { PROGRESS } from "./progress";
+import { SUBJUNCTIVE_WORDS } from "./subjunctive";
+import { PREPOSITIONS } from "./prepositions";
 
 export const VOCABULARY: readonly VocabEntry[] = [
   ...GREETINGS,
@@ -51,6 +54,9 @@ export const VOCABULARY: readonly VocabEntry[] = [
   ...FUTURE,
   ...COMPARE,
   ...WOULD,
+  ...PROGRESS,
+  ...SUBJUNCTIVE_WORDS,
+  ...PREPOSITIONS,
 ];
 
 const BY_ID: ReadonlyMap<string, VocabEntry> = new Map(VOCABULARY.map((v) => [v.id, v]));
