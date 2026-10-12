@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { BookOpen, Clock, Target, Trophy } from "lucide-react";
+import { DojoCard } from "@/components/dojo/DojoCard";
 import { PageContainer } from "@/components/layout/PageHeader";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { SectionHeading } from "@/components/ui/Card";
@@ -72,6 +73,7 @@ export function HomeDashboard() {
           <StatCard label="Lessons done" value={lessonsCompletedCount(state)} icon={<Trophy size={22} className="text-sol-600" />} tone="sol" />
           <StatCard label="Time studied" value={formatDuration(totalLearningSeconds(state))} icon={<Clock size={22} className="text-violet-500" />} tone="violet" />
         </div>
+        <DojoCard state={state} className="lg:col-span-3" />
       </div>
 
       <section className="mt-8" aria-labelledby="recent-heading">

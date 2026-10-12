@@ -2,6 +2,7 @@
 
 import { Brain, CalendarClock, Sparkles } from "lucide-react";
 import { useMemo, useState } from "react";
+import { DojoCard } from "@/components/dojo/DojoCard";
 import { PageContainer, PageHeader } from "@/components/layout/PageHeader";
 import { Mascot } from "@/components/brand/Mascot";
 import { ButtonLink } from "@/components/ui/Button";
@@ -93,6 +94,8 @@ export function ReviewHub() {
         </div>
         <Mascot mood={stats.due > 0 ? "thinking" : "cheer"} size={150} animated className="absolute -bottom-2 right-4 hidden sm:block" />
       </Card>
+
+      <DojoCard state={state} className="mt-6" />
 
       {words.length > 0 && (
         <>

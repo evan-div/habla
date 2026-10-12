@@ -3,7 +3,7 @@ import { buildSampleState } from "@/lib/storage/demo-data";
 import { DAY } from "@/lib/util/dates";
 import { createInitialState } from "./initial";
 import { getNowFor, resetAllProgress, setState, updateState } from "./store";
-import type { LearnerState, Profile, Settings } from "./types";
+import type { DojoState, LearnerState, Profile, Settings } from "./types";
 
 export function completeOnboarding(profile: Omit<Profile, "onboardedAt">) {
   updateState((s) => ({ ...s, profile: { ...profile, onboardedAt: getNowFor(s) } }));
@@ -36,6 +36,11 @@ export function applyTheme(theme: Settings["theme"]) {
   } catch {
     /* storage blocked — theme still applies for this session */
   }
+}
+
+/** Remember which tenses and verbs the learner drills in the Dojo. */
+export function updateDojoPrefs(patch: Partial<Pick<DojoState, "tenses" | "focus">>) {
+  updateState((s) => ({ ...s, dojo: { ...s.dojo, ...patch } }));
 }
 
 export function exportProgress(state: LearnerState): string {

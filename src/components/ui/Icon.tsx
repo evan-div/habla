@@ -1,6 +1,6 @@
 import {
   BookOpen, Briefcase, Brain, Calendar, Compass, Flag, Flame, Gem, GraduationCap, Hand, CircleHelp,
-  Library, MapPin, Users, Clock, MessageCircle, PartyPopper, Repeat, ShoppingBag, Sparkles, Target, Trophy, Utensils, Zap,
+  Library, MapPin, Medal, Users, Clock, MessageCircle, PartyPopper, Repeat, ShoppingBag, Sparkles, Swords, Target, Trophy, Utensils, Zap,
   type LucideIcon,
 } from "lucide-react";
 
@@ -19,11 +19,13 @@ const ICONS: Record<string, LucideIcon> = {
   "help-circle": CircleHelp,
   library: Library,
   "map-pin": MapPin,
+  medal: Medal,
   "message-circle": MessageCircle,
   "party-popper": PartyPopper,
   repeat: Repeat,
   "shopping-bag": ShoppingBag,
   sparkles: Sparkles,
+  swords: Swords,
   target: Target,
   trophy: Trophy,
   users: Users,

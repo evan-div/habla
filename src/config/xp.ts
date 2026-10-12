@@ -10,6 +10,8 @@ export const XP_RULES = {
   perfectReview: 10,
   /** Replaying a finished lesson still pays, just less — keeps XP honest. */
   repeatLessonFactor: 0.5,
+  /** Conjugation Dojo: small per-answer XP with a daily cap, so drilling never replaces lessons. */
+  dojo: { correctAnswer: 1, dailyCap: 60, beltEarned: 30 },
 } as const;
 
 export const DAILY_GOAL_OPTIONS = [

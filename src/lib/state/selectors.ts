@@ -15,7 +15,7 @@ const EMPTY_DAY = (date: string): DailyActivity => ({ date, xp: 0, seconds: 0, l
 
 export function activeDayKeys(state: LearnerState): string[] {
   return Object.values(state.activity)
-    .filter((d) => d.lessons + d.reviews > 0)
+    .filter((d) => d.lessons + d.reviews + (d.dojoSessions ?? 0) > 0)
     .map((d) => d.date);
 }
 
@@ -151,6 +151,7 @@ export function achievementStats(state: LearnerState, now: number): AchievementS
     realTalkLessons: state.counters.realTalkLessons,
     dailyGoalsHit: state.counters.dailyGoalsHit,
     level: levelForXp(state.totalXp),
+    beltsEarned: Object.keys(state.dojo.belts).length,
   };
 }
 

@@ -12,6 +12,8 @@ export interface AchievementStats {
   realTalkLessons: number;
   dailyGoalsHit: number;
   level: number;
+  /** Conjugation Dojo belts; they're earned in order, so 7 means black belt. */
+  beltsEarned: number;
 }
 
 export type AchievementTone = "teal" | "rosa" | "sol" | "leaf" | "violet";
@@ -46,6 +48,8 @@ export const ACHIEVEMENTS: readonly AchievementDef[] = [
   { id: "review-100", title: "100 Review Cards", description: "Complete 100 review cards.", icon: "repeat", tone: "teal", target: 100, progress: (s) => s.reviewCardsCompleted },
   { id: "goal-getter", title: "Goal Getter", description: "Hit your daily XP goal.", icon: "trophy", tone: "sol", target: 1, progress: (s) => s.dailyGoalsHit },
   { id: "explorer", title: "Explorer", description: "Reach level 5.", icon: "compass", tone: "leaf", target: 5, progress: (s) => s.level },
+  { id: "first-belt", title: "On the Mat", description: "Earn your first belt in the Conjugation Dojo.", icon: "medal", tone: "sol", target: 1, progress: (s) => s.beltsEarned },
+  { id: "black-belt", title: "Cinta Negra", description: "Earn the black belt in the Conjugation Dojo.", icon: "swords", tone: "violet", target: 7, progress: (s) => s.beltsEarned },
 ];
 
 export interface AchievementStatus {

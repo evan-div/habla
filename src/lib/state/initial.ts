@@ -37,6 +37,16 @@ export function createInitialState(userId: string = LOCAL_USER_ID): LearnerState
       dailyGoalsHit: 0,
     },
     placement: null,
+    dojo: {
+      belts: {},
+      beltAttempts: 0,
+      sessions: 0,
+      bestSparScore: 0,
+      bestCombo: 0,
+      stats: {},
+      tenses: [],
+      focus: "all",
+    },
     clockOffsetMs: 0,
   };
 }

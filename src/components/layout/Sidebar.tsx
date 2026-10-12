@@ -1,6 +1,6 @@
 "use client";
 
-import { GraduationCap } from "lucide-react";
+import { GraduationCap, Swords } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/brand/Logo";
@@ -67,6 +67,17 @@ export function Sidebar({ state, dueCount }: SidebarProps) {
         >
           <GraduationCap size={24} aria-hidden="true" />
           <span>Grammar</span>
+        </Link>
+        <Link
+          href="/dojo"
+          aria-current={isActivePath(pathname, "/dojo") ? "page" : undefined}
+          className={cn(
+            "flex flex-col items-center gap-1 rounded-2xl px-2 py-2.5 text-[11px] font-bold transition-colors lg:flex-row lg:gap-3 lg:px-4 lg:py-3 lg:text-[15px]",
+            isActivePath(pathname, "/dojo") ? "bg-soft-violet text-on-violet" : "text-muted hover:bg-surface-2 hover:text-ink",
+          )}
+        >
+          <Swords size={24} aria-hidden="true" />
+          <span>Dojo</span>
         </Link>
       </nav>
 

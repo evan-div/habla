@@ -19,6 +19,7 @@ export function migrateState(raw: unknown, userId: string): LearnerState | null 
     profile: { ...base.profile, ...data.profile },
     settings: { ...base.settings, ...data.settings },
     counters: { ...base.counters, ...data.counters },
+    dojo: { ...base.dojo, ...data.dojo },
     words: data.words ?? {},
     grammar: data.grammar ?? {},
     lessons: data.lessons ?? {},

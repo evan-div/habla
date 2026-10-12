@@ -8,8 +8,9 @@ Repo: https://github.com/evan-div/habla (`main`, last pushed commit `674cf60`).
 **Working and verified**
 - 30 playable units, 151 lessons, ~3,750 exercises (incl. teaching cards), 620 words, 79 grammar topics, 4 *Real Talk* (slang/vulgar) lessons.
 - Core loop: onboarding → (optional placement) → lesson → feedback → XP/streak/achievements → mastery update → spaced review → progress charts.
-- Pages: Home, Course, Vocabulary (+ word detail), Review (+ practice mode), Progress, Profile/Settings, Grammar reference, Onboarding, Placement.
-- `npm run check` = `tsc --noEmit` + ESLint + Vitest (84 tests). `npm run build` passes (static routes for every unit/grammar topic).
+- Pages: Home, Course, Vocabulary (+ word detail), Review (+ practice mode), Progress, Profile/Settings, Grammar reference, Onboarding, Placement, Conjugation Dojo.
+- **Conjugation Dojo** (`/dojo`): a conjugation mini game. Training (15 untimed prompts, misses come back), Sparring (60 s, combo multiplier, high score) and seven belt tests (white → black, 20 prompts, three misses ends it) that unlock as the course teaches each tense. Draws only on verbs and tenses the learner has met. Accents count here (hablo ≠ habló), and a wrong answer that's another real form gets named ("hablo is the yo form of the present"). Dojo XP is 1 per right answer, capped at 60/day, plus 30 per belt; sessions count toward the streak.
+- `npm run check` = `tsc --noEmit` + ESLint + Vitest (329 tests). `npm run build` passes (static routes for every unit/grammar topic).
 
 **Not built (deliberate)**: AI tutoring, speech recognition, accounts/cloud sync, leaderboards.
 **Sections 4–6** are built: "Telling Stories" (Units 13–15: preterite, imperfect, travel & culture), "Real Conversations" (Units 16–18: reflexive verbs, object pronouns, commands) "Beyond the Present" (Units 19–21: future, comparisons, conditional) "Speaking With Nuance" (Units 22–24: progressive and present perfect, the subjunctive, prepositions and connectors) and "Fine-Tuning" (Units 25–27: past perfect, imperfect subjunctive and hypotheticals, the *se* constructions) and "Mastery" (Units 28–30: conditional and future perfect, the unreal past, reported speech — ending in a graduation checkpoint). No units are stubbed on the map.
@@ -36,6 +37,8 @@ Profile → *Testing tools*: **Load sample progress** (2 weeks of replayed sessi
 | Applying a finished session | `src/lib/state/commit.ts` (`applySession`) |
 | State store, selectors, persistence | `src/lib/state/`, `src/lib/storage/` |
 | Lesson player & exercise views | `src/components/lesson/` (registry: `exercises/ExerciseRenderer.tsx`) |
+| Conjugator (13 tenses × 5 persons, all 122 verbs) | `src/lib/conjugate/` (irregulars: `irregulars.ts`) |
+| Conjugation Dojo logic / UI | `src/lib/dojo/` (belts and tense unlocks: `catalog.ts`) / `src/components/dojo/` |
 | Design tokens | `src/app/globals.css` |
 
 Read `README.md` for architecture and `docs/AUTHORING.md` for adding content.
@@ -68,7 +71,7 @@ Read `README.md` for architecture and `docs/AUTHORING.md` for adding content.
 ## Suggested next steps (in rough priority)
 
 1. Native-speaker content review (especially Real Talk lessons, Units 9–30).
-2. Next content: the grammar of the core course is complete (30 units covering every major tense and mood). The roadmap lists dialect variants — vosotros (Spain), voseo (Argentina and beyond) — and idioms/proverbs (`content/grammar/roadmap.ts`; the `Dialect` type in `content/types.ts` is ready for a second course). More valuable next steps: a mixed-practice mode that draws on every tense, longer reading/dialogue lessons, recorded audio, and a native-speaker review. `VerbData` still stores present tense only, so the word-detail conjugation table doesn't show other tenses yet (reflexive verbs store the pronoun, e.g. `me levanto`).
+2. Next content: the grammar of the core course is complete (30 units covering every major tense and mood). The roadmap lists dialect variants — vosotros (Spain), voseo (Argentina and beyond) — and idioms/proverbs (`content/grammar/roadmap.ts`; the `Dialect` type in `content/types.ts` is ready for a second course). More valuable next steps: longer reading/dialogue lessons, recorded audio, and a native-speaker review. `VerbData` stores the present tense only; every other tense comes from `src/lib/conjugate/`, which the word-detail conjugation table could now use to show all tenses. Dojo ideas not built yet: a Survival mode, a daily challenge, and commands (they don't fit the five-person table).
 3. Recorded audio for the highest-frequency words/phrases.
 4. Resume-mid-lesson (persist `SessionState` per lesson).
 5. Playwright tests for onboarding → lesson → review.

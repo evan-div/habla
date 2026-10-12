@@ -1,5 +1,6 @@
 import type { ExerciseType } from "@/content/types";
 import type { RecallKind } from "@/config/mastery";
+import type { Tense } from "@/lib/conjugate/conjugate";
 
 export type SelfLevel = "new" | "few-words" | "basic" | "simple-conversations";
 export type Reason =
@@ -84,6 +85,10 @@ export interface DailyActivity {
   newWords: number;
   correct: number;
   incorrect: number;
+  /** Conjugation Dojo sessions finished (they count toward the streak). */
+  dojoSessions?: number;
+  /** XP from Dojo answers, which is capped per day. */
+  dojoXp?: number;
 }
 
 export interface Counters {
@@ -103,6 +108,30 @@ export interface PlacementRecord {
   answered: number;
 }
 
+/** Which verbs the Dojo draws from. */
+export type DojoFocus = "all" | "tricky" | "weak";
+
+export interface DojoVerbStat {
+  attempts: number;
+  correct: number;
+  lastAt: number;
+}
+
+export interface DojoState {
+  /** Belts earned, by belt id. */
+  belts: Record<string, { earnedAt: number }>;
+  beltAttempts: number;
+  sessions: number;
+  bestSparScore: number;
+  /** Longest run of right answers in a sparring round. */
+  bestCombo: number;
+  /** First-try results per verb and tense, keyed `${verbId}:${tense}`. */
+  stats: Record<string, DojoVerbStat>;
+  /** Last tense pick for training and sparring (empty = everything unlocked). */
+  tenses: Tense[];
+  focus: DojoFocus;
+}
+
 export interface LearnerState {
   version: number;
   userId: string;
@@ -116,6 +145,7 @@ export interface LearnerState {
   achievements: Record<string, { unlockedAt: number }>;
   counters: Counters;
   placement: PlacementRecord | null;
+  dojo: DojoState;
   /** Developer tool: shifts "now" so spaced repetition can be tested. */
   clockOffsetMs: number;
 }

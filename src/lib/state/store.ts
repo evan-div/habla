@@ -1,4 +1,5 @@
 import { getCurrentUser } from "@/lib/auth/session";
+import { applyDojoSession, type DojoPayload, type DojoSummary } from "@/lib/dojo/commit";
 import { localRepository } from "@/lib/storage/local";
 import type { LearnerRepository } from "@/lib/storage/repository";
 import { applySession } from "./commit";
@@ -60,6 +61,15 @@ export function commitSession(payload: SessionPayload): SessionSummary {
   const current = ensureLoaded();
   if (!current) throw new Error("Learner state is not available yet.");
   const { state: next, summary } = applySession(current, payload, getNowFor(current));
+  setState(next);
+  return summary;
+}
+
+/** Commit a finished Conjugation Dojo session. */
+export function commitDojoSession(payload: DojoPayload): DojoSummary {
+  const current = ensureLoaded();
+  if (!current) throw new Error("Learner state is not available yet.");
+  const { state: next, summary } = applyDojoSession(current, payload, getNowFor(current));
   setState(next);
   return summary;
 }

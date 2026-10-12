@@ -67,7 +67,7 @@ describe("computeSessionXp", () => {
 
 describe("achievements", () => {
   it("clamps progress at target", () => {
-    const stats = { lessonsCompleted: 3, perfectLessons: 0, wordsLearned: 30, wordsMastered: 0, verbsLearned: 0, grammarLearned: 0, currentStreak: 0, longestStreak: 0, reviewCardsCompleted: 0, unitsCompleted: [], realTalkLessons: 0, dailyGoalsHit: 0, level: 1 };
+    const stats = { lessonsCompleted: 3, perfectLessons: 0, wordsLearned: 30, wordsMastered: 0, verbsLearned: 0, grammarLearned: 0, currentStreak: 0, longestStreak: 0, reviewCardsCompleted: 0, unitsCompleted: [], realTalkLessons: 0, dailyGoalsHit: 0, level: 1, beltsEarned: 0 };
     const statuses = achievementStatuses(stats);
     expect(statuses.find((s) => s.def.id === "first-lesson")?.unlocked).toBe(true);
     expect(statuses.find((s) => s.def.id === "words-25")?.unlocked).toBe(true);

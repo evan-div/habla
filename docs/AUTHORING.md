@@ -17,6 +17,11 @@ Everything a learner sees in the course lives in `src/content/`. You never touch
 - `regions: ["mx"]` marks regional words; `rn: [["es", "In Spain…"]]` adds regional notes.
 - Verbs take `verb: { …, conjugations: present([yo, tú, él/ella/usted, nosotros, ellos/ustedes]) }`.
   (Vosotros is deliberately omitted for Mexican Spanish and explained in the grammar notes.)
+  Only the present is written by hand: the Conjugation Dojo derives every other tense with
+  `src/lib/conjugate/`, reading the stem change off your present table. If the verb is irregular
+  outside the present (strong preterite, irregular future stem, irregular participle…), add it to
+  `src/lib/conjugate/irregulars.ts` — the conjugator test fails for any verb marked `"irregular"`
+  that's missing, and checks that the derived present matches your table.
 - Gendered adjectives/people use `fem`. Pairs the course teaches separately (madre/padre) are two entries.
 - Register the file in `vocabulary/index.ts`.
 
