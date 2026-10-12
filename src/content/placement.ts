@@ -175,6 +175,27 @@ const LEVELS: Array<{ unitNumber: number; questions: ExerciseDraft[] }> = [
       gq("Choose the connector.", "sin embargo", ["porque", "por eso"], { sentence: "Es caro; ___, es muy bueno." }),
     ],
   },
+  {
+    unitNumber: 25,
+    questions: [
+      gq("Choose the form of HABER.", "habían", ["han", "habíamos"], { sentence: "Cuando llegué, mis amigos ya ___ salido." }),
+      gq("Choose the form.", "Acabo", ["Acabé", "Acabaré"], { sentence: "___ de llegar." }),
+    ],
+  },
+  {
+    unitNumber: 26,
+    questions: [
+      gq("Choose the form.", "tuviera", ["tengo", "tendría"], { sentence: "Si yo ___ dinero, viajaría." }),
+      gq("Choose the form.", "pudiera", ["puedo", "podría"], { sentence: "Ojalá ___ viajar más." }),
+    ],
+  },
+  {
+    unitNumber: 27,
+    questions: [
+      gq("Choose the verb.", "venden", ["vende", "vendo"], { sentence: "Se ___ coches." }),
+      gq("Choose the verb.", "olvidó", ["olvidé", "olvidaron"], { sentence: "Se me ___ la llave." }),
+    ],
+  },
 ];
 
 export interface PlacementLevel {

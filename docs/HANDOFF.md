@@ -6,13 +6,13 @@ Repo: https://github.com/evan-div/habla (`main`, last pushed commit `674cf60`).
 ## State of the project
 
 **Working and verified**
-- 24 playable units, 121 lessons, ~2,800 exercises (incl. teaching cards), 557 words, 64 grammar topics, 4 *Real Talk* (slang/vulgar) lessons.
+- 27 playable units, 136 lessons, ~3,300 exercises (incl. teaching cards), 591 words, 72 grammar topics, 4 *Real Talk* (slang/vulgar) lessons.
 - Core loop: onboarding → (optional placement) → lesson → feedback → XP/streak/achievements → mastery update → spaced review → progress charts.
 - Pages: Home, Course, Vocabulary (+ word detail), Review (+ practice mode), Progress, Profile/Settings, Grammar reference, Onboarding, Placement.
 - `npm run check` = `tsc --noEmit` + ESLint + Vitest (84 tests). `npm run build` passes (static routes for every unit/grammar topic).
 
 **Not built (deliberate)**: AI tutoring, speech recognition, accounts/cloud sync, leaderboards.
-**Sections 4–6** are built: "Telling Stories" (Units 13–15: preterite, imperfect, travel & culture), "Real Conversations" (Units 16–18: reflexive verbs, object pronouns, commands) "Beyond the Present" (Units 19–21: future, comparisons, conditional) and "Speaking With Nuance" (Units 22–24: progressive and present perfect, the subjunctive, prepositions and connectors). No units are stubbed on the map.
+**Sections 4–6** are built: "Telling Stories" (Units 13–15: preterite, imperfect, travel & culture), "Real Conversations" (Units 16–18: reflexive verbs, object pronouns, commands) "Beyond the Present" (Units 19–21: future, comparisons, conditional) "Speaking With Nuance" (Units 22–24: progressive and present perfect, the subjunctive, prepositions and connectors) and "Fine-Tuning" (Units 25–27: past perfect, imperfect subjunctive and hypotheticals, the *se* constructions). No units are stubbed on the map.
 
 ## Run it
 
@@ -67,8 +67,8 @@ Read `README.md` for architecture and `docs/AUTHORING.md` for adding content.
 
 ## Suggested next steps (in rough priority)
 
-1. Native-speaker content review (especially Real Talk lessons, Units 9–24).
-2. Next content: Units 25+ — the roadmap has the past perfect, the imperfect subjunctive (si tuviera…) and impersonal/passive se (see `content/grammar/roadmap.ts`); also more Real Talk and longer reading/dialogue lessons. The course now covers the full set of core tenses, so a good next step is a review/"mixed practice" mode that draws on all of them. Past-tense forms are taught in grammar tables only (reflexive verbs store the pronoun in the present table, e.g. `me levanto`); `VerbData` still stores present tense only, so the word-detail conjugation table doesn't show preterite/imperfect yet.
+1. Native-speaker content review (especially Real Talk lessons, Units 9–27).
+2. Next content: the roadmap has the conditional perfect (habría ido), the past perfect subjunctive (si hubiera sabido…) and reported speech (dijo que vendría) — see `content/grammar/roadmap.ts`. The core grammar of the course is now essentially complete, so more valuable next steps may be a mixed-practice mode that draws on every tense, longer reading/dialogue lessons, recorded audio, and a native-speaker review. Past-tense forms are taught in grammar tables only (reflexive verbs store the pronoun in the present table, e.g. `me levanto`); `VerbData` still stores present tense only, so the word-detail conjugation table doesn't show other tenses yet.
 3. Recorded audio for the highest-frequency words/phrases.
 4. Resume-mid-lesson (persist `SessionState` per lesson).
 5. Playwright tests for onboarding → lesson → review.

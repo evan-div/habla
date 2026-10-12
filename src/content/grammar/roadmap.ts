@@ -11,7 +11,7 @@ const planned = (id: string, title: string, tagline: string): GrammarConcept => 
 
 /** On the roadmap. Listed so learners can see where the course is heading. */
 export const ROADMAP: GrammarConcept[] = [
-  planned("past-perfect", "Past perfect", "Había hablado — what had already happened."),
-  planned("imperfect-subjunctive", "Imperfect subjunctive", "Si tuviera… — hypothetical “if I had…”."),
-  planned("se-impersonal", "Impersonal and passive se", "Se habla español — how things are done."),
+  planned("conditional-perfect", "Conditional perfect", "Habría ido — what would have happened."),
+  planned("pluperfect-subjunctive", "Past perfect subjunctive", "Si hubiera sabido… — regrets and the unreal past."),
+  planned("reported-speech", "Reported speech", "Dijo que vendría — telling what others said."),
 ];

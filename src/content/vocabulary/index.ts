@@ -22,6 +22,9 @@ import { WOULD } from "./conditional";
 import { PROGRESS } from "./progress";
 import { SUBJUNCTIVE_WORDS } from "./subjunctive";
 import { PREPOSITIONS } from "./prepositions";
+import { PERFECT } from "./perfect";
+import { HYPOTHETICAL } from "./hypothetical";
+import { SE_WORDS } from "./se";
 
 export const VOCABULARY: readonly VocabEntry[] = [
   ...GREETINGS,
@@ -57,6 +60,9 @@ export const VOCABULARY: readonly VocabEntry[] = [
   ...PROGRESS,
   ...SUBJUNCTIVE_WORDS,
   ...PREPOSITIONS,
+  ...PERFECT,
+  ...HYPOTHETICAL,
+  ...SE_WORDS,
 ];
 
 const BY_ID: ReadonlyMap<string, VocabEntry> = new Map(VOCABULARY.map((v) => [v.id, v]));

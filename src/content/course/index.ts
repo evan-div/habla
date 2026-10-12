@@ -23,6 +23,9 @@ import { unit21 } from "./units/unit-21-conditional";
 import { unit22 } from "./units/unit-22-progress";
 import { unit23 } from "./units/unit-23-subjunctive";
 import { unit24 } from "./units/unit-24-connect";
+import { unit25 } from "./units/unit-25-perfect";
+import { unit26 } from "./units/unit-26-hypothetical";
+import { unit27 } from "./units/unit-27-se";
 
 const section1: Section = {
   id: "section-1-foundations",
@@ -90,13 +93,21 @@ const section7: Section = {
   units: [unit22, unit23, unit24],
 };
 
+const section8: Section = {
+  id: "section-8-finetune",
+  number: 8,
+  title: "Fine-Tuning",
+  description: "Order of events, hypotheticals and the se constructions that make Spanish sound natural.",
+  units: [unit25, unit26, unit27],
+};
+
 export const COURSE: Course = {
   id: "spanish-foundations",
   title: "Spanish Foundations",
   tagline: "Mexican Spanish for English speakers",
   language: "es",
   dialect: "es-MX",
-  sections: [section1, section2, section3, section4, section5, section6, section7],
+  sections: [section1, section2, section3, section4, section5, section6, section7, section8],
 };
 
 /* ------------------------------------------------------------------ */
