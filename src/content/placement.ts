@@ -196,6 +196,27 @@ const LEVELS: Array<{ unitNumber: number; questions: ExerciseDraft[] }> = [
       gq("Choose the verb.", "olvidó", ["olvidé", "olvidaron"], { sentence: "Se me ___ la llave." }),
     ],
   },
+  {
+    unitNumber: 28,
+    questions: [
+      gq("Choose the form.", "habría", ["había", "he"], { sentence: "Yo ___ ido, pero tenía trabajo." }),
+      gq("Choose the form.", "habrán", ["han", "habían"], { sentence: "A estas horas ya ___ llegado." }),
+    ],
+  },
+  {
+    unitNumber: 29,
+    questions: [
+      gq("Choose the form.", "hubiera", ["habría", "había"], { sentence: "Si ___ sabido, habría venido." }),
+      gq("Choose the form.", "debería", ["debo", "debía"], { sentence: "Yo ___ haber estudiado más." }),
+    ],
+  },
+  {
+    unitNumber: 30,
+    questions: [
+      gq("Choose the verb.", "tenía", ["tengo", "tendrá"], { sentence: "Dijo que ___ hambre." }),
+      gq("Choose the word.", "si", ["que", "qué"], { sentence: "Me preguntó ___ tenía hermanos." }),
+    ],
+  },
 ];
 
 export interface PlacementLevel {

@@ -20,15 +20,15 @@ use **Load sample progress**; use **+1 day** there to watch spaced repetition br
 
 ## What's in the course
 
-27 playable units (136 lessons, ~3,300 exercises, ~590 words and phrases) — Hello · Introducing Yourself ·
+30 playable units (151 lessons, ~3,750 exercises, ~620 words and phrases) — Hello · Introducing Yourself ·
 Essential Verbs · People & Family · Food & Drink · Question Words · Places & Directions · Present-Tense Verbs ·
 Making Plans · Shopping · Work & School · Friends & Social Life · What Happened (preterite) · How Things Were
 (imperfect) · Travel & Culture · My Day (reflexive verbs) · Lo, La, Me, Te (object pronouns) · Do This, Don't Do That
-(commands) · What Will Happen (future) · Better, Bigger, Faster (comparisons) · Would You…? (conditional) · Happening Now, Done Already (progressive and present perfect) · I Hope That… (subjunctive) · Connecting Ideas (prepositions and connectors) · Had Already Happened (past perfect) · If I Were You (imperfect subjunctive) · Se Habla Español (se constructions) — with four uncensored, clearly labeled *Real Talk*
-lessons (slang and vulgar expressions behind a heads-up screen). 72 grammar topics are taught and explained; 3 more
-are on the roadmap.
+(commands) · What Will Happen (future) · Better, Bigger, Faster (comparisons) · Would You…? (conditional) · Happening Now, Done Already (progressive and present perfect) · I Hope That… (subjunctive) · Connecting Ideas (prepositions and connectors) · Had Already Happened (past perfect) · If I Were You (imperfect subjunctive) · Se Habla Español (se constructions) · What Would Have Happened (conditional and future perfect) · If Only I Had Known (unreal past) · He Said That… (reported speech) — with four uncensored, clearly labeled *Real Talk*
+lessons (slang and vulgar expressions behind a heads-up screen). 79 grammar topics are taught and explained; 3 more
+(dialect variants and idioms) are on the roadmap.
 
-**Placement.** Learners who say they know some Spanish get a short, no-feedback check (two questions per unit across all 27 units,
+**Placement.** Learners who say they know some Spanish get a short, no-feedback check (two questions per unit across all 30 units,
 easiest first; it stops at the first level not fully passed). Accepting the result marks earlier lessons
 "skipped" and adds their words to the library at moderate mastery, spread over the next days of review so the
 assumption is checked gently. It's re-takeable from Profile. See `src/content/placement.ts` and `src/lib/placement.ts`.

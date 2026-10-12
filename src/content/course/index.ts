@@ -26,6 +26,9 @@ import { unit24 } from "./units/unit-24-connect";
 import { unit25 } from "./units/unit-25-perfect";
 import { unit26 } from "./units/unit-26-hypothetical";
 import { unit27 } from "./units/unit-27-se";
+import { unit28 } from "./units/unit-28-perfects";
+import { unit29 } from "./units/unit-29-unreal";
+import { unit30 } from "./units/unit-30-reported";
 
 const section1: Section = {
   id: "section-1-foundations",
@@ -101,13 +104,21 @@ const section8: Section = {
   units: [unit25, unit26, unit27],
 };
 
+const section9: Section = {
+  id: "section-9-mastery",
+  number: 9,
+  title: "Mastery",
+  description: "Regrets, unreal pasts and reporting what others said: the last steps to following any conversation.",
+  units: [unit28, unit29, unit30],
+};
+
 export const COURSE: Course = {
   id: "spanish-foundations",
   title: "Spanish Foundations",
   tagline: "Mexican Spanish for English speakers",
   language: "es",
   dialect: "es-MX",
-  sections: [section1, section2, section3, section4, section5, section6, section7, section8],
+  sections: [section1, section2, section3, section4, section5, section6, section7, section8, section9],
 };
 
 /* ------------------------------------------------------------------ */

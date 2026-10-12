@@ -25,6 +25,8 @@ import { PREPOSITIONS } from "./prepositions";
 import { PERFECT } from "./perfect";
 import { HYPOTHETICAL } from "./hypothetical";
 import { SE_WORDS } from "./se";
+import { REGRETS } from "./regrets";
+import { REPORTED } from "./reported";
 
 export const VOCABULARY: readonly VocabEntry[] = [
   ...GREETINGS,
@@ -63,6 +65,8 @@ export const VOCABULARY: readonly VocabEntry[] = [
   ...PERFECT,
   ...HYPOTHETICAL,
   ...SE_WORDS,
+  ...REGRETS,
+  ...REPORTED,
 ];
 
 const BY_ID: ReadonlyMap<string, VocabEntry> = new Map(VOCABULARY.map((v) => [v.id, v]));
