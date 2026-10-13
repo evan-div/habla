@@ -118,6 +118,16 @@ export interface LearnerState {
   placement: PlacementRecord | null;
   /** Developer tool: shifts "now" so spaced repetition can be tested. */
   clockOffsetMs: number;
+  /** Real wall-clock time of the last local edit. Used to resolve conflicts when syncing between devices. */
+  updatedAt: number;
+  /** When the profile / settings were last edited (real time). Lets a stale device's old values lose to a newer edit made elsewhere. */
+  profileEditedAt: number;
+  settingsEditedAt: number;
+  /**
+   * Bumped when progress is deliberately replaced (reset, import) so other devices
+   * take the replacement instead of merging their old progress back in.
+   */
+  epoch: number;
 }
 
 /* ---- Session results ---------------------------------------------- */

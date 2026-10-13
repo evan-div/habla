@@ -15,6 +15,7 @@ import { formatDuration } from "@/lib/util/dates";
 import { ContinueCard } from "./ContinueCard";
 import { LevelCard } from "./LevelCard";
 import { ReviewCard } from "./ReviewCard";
+import { SaveProgressNudge } from "./SaveProgressNudge";
 import { TodayCard } from "./TodayCard";
 
 function timeGreeting(now: number): string {
@@ -54,6 +55,8 @@ export function HomeDashboard() {
         </h1>
         <p className="mt-1 text-muted">Here&apos;s what to do today.</p>
       </header>
+
+      {lessonsCompletedCount(state) > 0 && <SaveProgressNudge />}
 
       <div className="grid gap-5 lg:grid-cols-3">
         <div className="lg:col-span-2">

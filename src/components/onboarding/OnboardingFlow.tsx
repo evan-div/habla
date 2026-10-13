@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Mascot, type MascotMood } from "@/components/brand/Mascot";
 import { Logo } from "@/components/brand/Logo";
+import Link from "next/link";
 import { LoadingScreen } from "@/components/layout/LoadingScreen";
 import { Button } from "@/components/ui/Button";
 import { DAILY_GOAL_OPTIONS, DEFAULT_DAILY_GOAL_XP } from "@/config/xp";
@@ -170,6 +171,12 @@ export function OnboardingFlow() {
           {step === "welcome" ? "Let's start" : step === "plan" ? (level && level !== "new" ? "Find my starting point" : "Start learning") : "Continue"}
         </Button>
         {step === "name" && <Button variant="ghost" fullWidth onClick={next}>Skip</Button>}
+        {step === "welcome" && (
+          <p className="text-center text-sm text-muted">
+            Already have an account?{" "}
+            <Link href="/login" className="font-extrabold text-on-teal underline-offset-2 hover:underline">Log in</Link>
+          </p>
+        )}
       </div>
     </div>
   );

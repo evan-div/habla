@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/Card";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { levelInfo } from "@/lib/gamification/levels";
 import { useLearner } from "@/lib/state/hooks";
+import { AccountCard } from "./AccountCard";
 import { DataCard } from "./DataCard";
 import { DeveloperTools } from "./DeveloperTools";
 import { PlacementCard } from "./PlacementCard";
@@ -38,6 +39,7 @@ export function ProfileSettings() {
           </div>
           <Badge tone="neutral" className="ml-auto hidden sm:inline-flex">Mexican Spanish</Badge>
         </Card>
+        <AccountCard />
         <ProfileCard key={state.profile.displayName} profile={state.profile} />
         <PlacementCard placement={state.placement} />
         <PreferencesCard settings={state.settings} />

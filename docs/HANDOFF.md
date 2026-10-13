@@ -1,6 +1,6 @@
 # ¡Habla! — handoff
 
-A structured Mexican-Spanish course for English speakers. Local-first Next.js web app; no backend, no AI calls.
+A structured Mexican-Spanish course for English speakers. Local-first Next.js web app with optional Supabase accounts + cross-device sync; no AI calls.
 Repo: https://github.com/evan-div/habla (`main`, last pushed commit `674cf60`).
 
 ## State of the project
@@ -11,7 +11,9 @@ Repo: https://github.com/evan-div/habla (`main`, last pushed commit `674cf60`).
 - Pages: Home, Course, Vocabulary (+ word detail), Review (+ practice mode), Progress, Profile/Settings, Grammar reference, Onboarding, Placement.
 - `npm run check` = `tsc --noEmit` + ESLint + Vitest (84 tests). `npm run build` passes (static routes for every unit/grammar topic).
 
-**Not built (deliberate)**: AI tutoring, speech recognition, accounts/cloud sync, leaderboards.
+**Not built (deliberate)**: AI tutoring, speech recognition, leaderboards.
+
+**Accounts & sync** (email + password, Supabase) are built — see README → *Accounts & sync*. Needs a Supabase project + two env vars to turn on; otherwise the app runs local-only. Not yet verified against a real Supabase project (only against a local mock of its auth/REST endpoints) — do the setup and one phone↔desktop pass first.
 **Sections 4–6** are built: "Telling Stories" (Units 13–15: preterite, imperfect, travel & culture), "Real Conversations" (Units 16–18: reflexive verbs, object pronouns, commands) "Beyond the Present" (Units 19–21: future, comparisons, conditional) "Speaking With Nuance" (Units 22–24: progressive and present perfect, the subjunctive, prepositions and connectors) and "Fine-Tuning" (Units 25–27: past perfect, imperfect subjunctive and hypotheticals, the *se* constructions) and "Mastery" (Units 28–30: conditional and future perfect, the unreal past, reported speech — ending in a graduation checkpoint). No units are stubbed on the map.
 
 ## Run it
@@ -63,7 +65,8 @@ Read `README.md` for architecture and `docs/AUTHORING.md` for adding content.
 - **Audio is browser speech synthesis.** Quality varies by OS; macOS has good `es-MX` ("Paulina"). Voice picker prefers `es-MX` and avoids novelty voices. Recorded audio plugs in via `AudioRef.sources`.
 - **No browser/E2E tests.** The core loop was verified manually in a browser pane and by `loop.test.ts`; phone/tablet layouts were checked in an emulator only (no real iOS/Android pass).
 - **`npm audit`** reports 5 high advisories in the dev-tooling chain from the Next scaffold (not runtime code).
-- Progress is per-browser; there's export/import in Profile as the only transfer mechanism.
+- Sync merges at record level; profile/settings are last-edit-wins, and `counters` take the larger value per key (so a counter can undercount if two devices each earned some while apart). XP uses the larger total plus any extra days found in the merge. No per-field conflict UI.
+- No account deletion, magic-link or Google sign-in yet (email + password only).
 
 ## Suggested next steps (in rough priority)
 
@@ -73,5 +76,5 @@ Read `README.md` for architecture and `docs/AUTHORING.md` for adding content.
 4. Resume-mid-lesson (persist `SessionState` per lesson).
 5. Playwright tests for onboarding → lesson → review.
 6. Deploy (e.g. Vercel) + CI running `npm run check`.
-7. Accounts + sync behind `LearnerRepository` / `lib/auth/session.ts`.
+7. Account deletion, social sign-in, and a sync status indicator outside Profile.
 8. Optional speaking exercises using the Web Speech recognition API.

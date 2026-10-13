@@ -4,7 +4,7 @@ A structured Spanish course for English speakers: a real curriculum with vocabul
 listening, spaced-repetition review and light gamification — built around **Mexican Spanish**.
 
 The first version is a local-first web app (Next.js App Router) designed to grow into a mobile app.
-It has no backend and never calls an AI API; both can be added without rewriting the product.
+It never calls an AI API. Progress is saved on the device first; an optional Supabase account syncs it across devices (see *Accounts & sync*).
 
 ## Run it
 
@@ -49,6 +49,8 @@ src/
     gamification/   XP rules, levels, forgiving streak, achievements
     state/          Learner state, commitSession(), selectors, external store + hooks
     storage/        Repository interface + localStorage implementation + migrations
+    auth/           Supabase sign-in/up/out, password reset, account state
+    sync/           Merge + cloud sync engine (progress follows the account across devices)
     audio/          Speech synthesis behind a recorded-audio-ready clip model
   config/         Every tunable number: XP, levels, mastery, SRS
   components/     UI: ui/ (design system) · lesson/ (player + exercise views) · charts/ · …
@@ -76,16 +78,49 @@ src/
 - **Dialects.** The course declares `dialect: "es-MX"`; words carry `register` (standard / informal / slang /
   vulgar) and `regions`, plus per-region notes. Adding Spain or Argentina means a new course (or regional
   overlays) — not a new engine.
-- **Persistence & accounts.** Progress lives behind `LearnerRepository` (localStorage today, with schema
-  migrations). `lib/auth/session.ts` is the seam where a signed-in user will plug in; a cloud repository can
-  wrap the same interface.
+- **Persistence & accounts.** Local-first: progress is always written to `localStorage` (behind
+  `LearnerRepository`, with schema migrations), so the app works offline and signed out. Signing in adds
+  cloud sync on top — see below.
 - **Audio.** `AudioRef { text, sources? }` — speech synthesis today (prefers an `es-MX` voice); drop recorded
   files into `sources.slow/normal` and they win automatically.
 
 ### Not built yet (by design)
 
-AI tutoring/conversation, speech recognition/pronunciation scoring, accounts and cloud sync, leaderboards.
-The exercise schema, audio model and repository seam are shaped so each can be added cleanly.
+AI tutoring/conversation, speech recognition/pronunciation scoring, leaderboards.
+The exercise schema and audio model are shaped so each can be added cleanly.
+
+## Accounts & sync
+
+Email + password accounts (Supabase) let progress follow a learner from phone to desktop. Without the
+setup below the app still works exactly as before — progress stays on the device and the account screens
+say accounts aren't set up.
+
+**One-time setup**
+
+1. Create a project at [supabase.com](https://supabase.com).
+2. **SQL Editor** → paste and run [`supabase/schema.sql`](supabase/schema.sql) (one table, with row-level
+   security so each person can only reach their own row).
+3. **Authentication → Providers → Email**: set *minimum password length* to 8 (the app enforces 8 too).
+   Leave *Confirm email* on for production; turn it off to sign up instantly while testing.
+4. **Authentication → URL Configuration**: set *Site URL* to the deployed app's URL and add it plus
+   `http://localhost:3000` to *Redirect URLs*. Confirmation and password-reset emails link back to the app.
+5. **Project Settings → API**: copy the project URL and the anon/publishable key into `.env.local`
+   (template: [`.env.example`](.env.example)). On your host (e.g. Vercel) set the same two variables —
+   they are baked in at build time, so redeploy after changing them.
+
+**How it works** (`src/lib/sync/`, `src/lib/auth/`)
+
+- Every change is saved locally first, then pushed to the account a moment later. The app pulls when it
+  returns to the foreground or the network comes back, so switching devices picks up where you left off.
+- **Merging, not overwriting.** If two devices were used apart, progress is merged record by record
+  (`sync/merge.ts`): each word/lesson/day keeps whichever copy is more recent, achievements are unioned,
+  and profile/settings take the most recent *edit*. Writes use a revision check, so a device that is behind
+  re-reads, merges and retries instead of clobbering the other.
+- **Reset and import** start a new `epoch`, which other devices adopt instead of merging old progress back.
+- **Signing out** pushes pending progress, then removes it from that device (so a shared device starts
+  clean). If it can't be saved (offline) you're asked before it's discarded.
+- Signing in on a device with signed-out progress folds that progress into the account; signing in as a
+  *different* account on the same device never mixes the two.
 
 ## Quality gates
 

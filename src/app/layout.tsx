@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Figtree } from "next/font/google";
+import { AccountProvider } from "@/components/auth/AccountProvider";
 import "./globals.css";
 
 const display = Bricolage_Grotesque({ variable: "--font-display", subsets: ["latin"], display: "swap" });
@@ -28,7 +29,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
       </head>
-      <body className="min-h-dvh">{children}</body>
+      <body className="min-h-dvh">
+        <AccountProvider />
+        {children}
+      </body>
     </html>
   );
 }

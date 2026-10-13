@@ -1,9 +1,9 @@
 import { LOCAL_USER_ID } from "@/lib/state/initial";
 
 /**
- * Identity seam. The prototype runs as a single local learner; when real
- * authentication arrives, resolve the signed-in user here and the storage
- * layer (keyed by user id) follows without changes elsewhere.
+ * Identity of the local progress record. Progress is always stored under one
+ * local learner on this device; signing in (see ./account.ts) additionally
+ * syncs that record to the account via lib/sync.
  */
 export interface AuthUser {
   id: string;

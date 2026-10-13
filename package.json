@@ -13,6 +13,7 @@
     "check": "tsc --noEmit && eslint && vitest run"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.117.3",
     "lucide-react": "^1.52.0",
     "next": "16.3.8",
     "react": "19.2.8",
@@ -29,5 +30,5 @@
     "typescript": "^5",
     "vitest": "^5.0.3"
   },
-  "description": "\u00a1Habla! \u2014 a structured Mexican-Spanish course for English speakers"
+  "description": "¡Habla! — a structured Mexican-Spanish course for English speakers"
 }

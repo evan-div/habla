@@ -2,11 +2,11 @@ import { applyPlacement } from "@/lib/placement";
 import { buildSampleState } from "@/lib/storage/demo-data";
 import { DAY } from "@/lib/util/dates";
 import { createInitialState } from "./initial";
-import { getNowFor, resetAllProgress, setState, updateState } from "./store";
+import { getNowFor, replaceProgress, resetAllProgress, updateState } from "./store";
 import type { LearnerState, Profile, Settings } from "./types";
 
 export function completeOnboarding(profile: Omit<Profile, "onboardedAt">) {
-  updateState((s) => ({ ...s, profile: { ...profile, onboardedAt: getNowFor(s) } }));
+  updateState((s) => ({ ...s, profile: { ...profile, onboardedAt: getNowFor(s) }, profileEditedAt: Date.now() }));
 }
 
 /** Start the course at `startUnitNumber`, skipping (and adding to review) everything before it. */
@@ -15,11 +15,11 @@ export function choosePlacement(startUnitNumber: number, score: { correct: numbe
 }
 
 export function updateProfile(patch: Partial<Profile>) {
-  updateState((s) => ({ ...s, profile: { ...s.profile, ...patch } }));
+  updateState((s) => ({ ...s, profile: { ...s.profile, ...patch }, profileEditedAt: Date.now() }));
 }
 
 export function updateSettings(patch: Partial<Settings>) {
-  updateState((s) => ({ ...s, settings: { ...s.settings, ...patch } }));
+  updateState((s) => ({ ...s, settings: { ...s.settings, ...patch }, settingsEditedAt: Date.now() }));
   if (patch.theme) applyTheme(patch.theme);
 }
 
@@ -48,7 +48,7 @@ export async function importProgress(text: string): Promise<string | null> {
     const { migrateState } = await import("@/lib/storage/migrations");
     const parsed = migrateState(JSON.parse(text), createInitialState().userId);
     if (!parsed) return "That file doesn't look like a Habla progress export.";
-    setState(parsed);
+    replaceProgress(parsed);
     return null;
   } catch {
     return "Couldn't read that file — is it a Habla export?";

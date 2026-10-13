@@ -42,11 +42,31 @@ export function getNowFor(s: LearnerState | null): number {
   return Date.now() + (s?.clockOffsetMs ?? 0);
 }
 
-/** Replace the whole state (and persist it). */
+/** Replace the whole state (and persist it). Counts as a local edit: it's stamped so sync can order it. */
 export function setState(next: LearnerState) {
+  state = { ...next, updatedAt: Date.now() };
+  repository.save(state);
+  emit();
+}
+
+/** Apply state that arrived from the cloud. Not an edit, so it keeps its own timestamp and isn't pushed back. */
+export function applySyncedState(next: LearnerState) {
   state = next;
   repository.save(next);
   emit();
+}
+
+/** Forget this device's copy entirely (signing out). Does not touch the cloud. */
+export function clearLocalProgress() {
+  const user = getCurrentUser();
+  repository.clear(user.id);
+  state = createInitialState(user.id);
+  emit();
+}
+
+/** Start over, deliberately: a new epoch makes other devices take this reset instead of merging old progress back. */
+export function replaceProgress(next: LearnerState) {
+  setState({ ...next, epoch: Date.now() });
 }
 
 /** Update the state with a pure function. No-op until the store has loaded. */
@@ -67,7 +87,7 @@ export function commitSession(payload: SessionPayload): SessionSummary {
 export function resetAllProgress() {
   const user = getCurrentUser();
   repository.clear(user.id);
-  setState(createInitialState(user.id));
+  replaceProgress(createInitialState(user.id));
 }
 
 /** Swap the persistence backend (used by tests and, later, cloud sync). */

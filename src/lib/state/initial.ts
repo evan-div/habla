@@ -38,5 +38,9 @@ export function createInitialState(userId: string = LOCAL_USER_ID): LearnerState
     },
     placement: null,
     clockOffsetMs: 0,
+    updatedAt: 0,
+    profileEditedAt: 0,
+    settingsEditedAt: 0,
+    epoch: 0,
   };
 }

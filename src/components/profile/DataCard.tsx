@@ -35,7 +35,7 @@ export function DataCard({ state }: { state: LearnerState }) {
     <Card padding="md" as="section" aria-labelledby="data-heading">
       <h2 id="data-heading" className="text-xl font-extrabold">Your data</h2>
       <p className="mt-1 text-sm text-muted">
-        Your progress is saved on this device. Accounts and cloud sync are <span className="font-bold">coming later</span> — until then, export a backup to move between devices.
+        Your progress is always saved on this device first. Log in to an account to sync it across devices; a backup file is a handy extra.
       </p>
       <div className="mt-4 flex flex-wrap gap-3">
         <Button variant="secondary" onClick={download} leadingIcon={<Download size={18} aria-hidden="true" />}>Export progress</Button>
@@ -59,7 +59,7 @@ export function DataCard({ state }: { state: LearnerState }) {
           </>
         }
       >
-        <p className="text-[17px] text-muted">This deletes your XP, streaks, vocabulary and lesson history on this device, and takes you back to the welcome screen. Export a backup first if you might want it back.</p>
+        <p className="text-[17px] text-muted">This deletes your XP, streaks, vocabulary and lesson history and takes you back to the welcome screen. If you&apos;re logged in, it clears your account&apos;s saved progress and your other devices too. Export a backup first if you might want it back.</p>
       </Modal>
     </Card>
   );
